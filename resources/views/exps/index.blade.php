@@ -14,22 +14,32 @@
                         <tr>
                             <th>Nom</th>
                             <th>Action</th>
+                            <th>Image</th>
                         </tr>
+                        @foreach($users as $user)
+                            @if($user->id_user == Auth::user()->id)
                         @foreach($exps as $exp)
                         <tr>
-                            <td>{{ link_to_route('exp.show', $exp->name, [$exp->id]) }}</td>
-                            <td>
-                                {!! Form::open(array('route'=>['exp.destroy', $exp->id], 'method'=>'DELETE')) !!}
-                                     {{ link_to_route('exp.edit', 'Edit', [$exp->id], ['class' => 'btn btn-primary']) }}
-                                |
+                            @if($user->id_exp == $exp->id)
+                                <td>{{ link_to_route('exp.show', $exp->name, [$exp->id]) }}</td>
+                                <td>
+                                    {!! Form::open(array('route'=>['exp.destroy', $exp->id], 'method'=>'DELETE')) !!}
+                                    {{ link_to_route('exp.edit', 'Edit', [$exp->id], ['class' => 'btn btn-primary']) }}
+                                    |
                                     {!! Form::button('Delete', ['class'=>'btn btn-danger', 'type'=>'submit']) !!}
-                                {!! Form::close() !!}
-                            </td>
+                                    {!! Form::close() !!}
+                                </td>
+                                <td>
+                                    img
+                                </td>
+                            @endif
                         </tr>
-                        @endforeach 
-                    </table>            
-                </div>
-            </div>
+                        @endforeach
+                    @endif
+                @endforeach
+                            </table>
+                        </div>
+                    </div>
             {{ link_to_route('exp.create', 'Add new experience', null, ['class' => 'btn btn-success']) }}
         </div>
     </div>

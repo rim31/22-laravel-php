@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 // use App\Http\Requests;
 
 use App\Exp;
+use App\JoinUserExp;
+use Auth;
+use DB;
 
 use App\Http\Requests\ExpRequest;
 
@@ -20,7 +23,8 @@ class ExpController extends Controller
     public function index()
     {
         $exps = Exp::all();
-        return view('exps.index', compact('exps'));
+        $users = JoinUserExp::all();
+        return view('exps.index', compact('exps', 'users'));
     }
 
     /**
@@ -41,7 +45,13 @@ class ExpController extends Controller
      */
     public function store(ExpRequest $request)
     {
-        Exp::create($request->all());
+        $nouvel = Exp::create($request->all());
+//jointure de entre la table user et exp
+        $join = JoinUserExp::create([
+            'id_user' => Auth::user()->id,
+            'id_exp' => $nouvel->id
+        ]);
+
         return redirect()->route('exp.index')->with('message', 'new experience added !');
     }
 

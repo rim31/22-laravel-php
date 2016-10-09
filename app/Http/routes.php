@@ -15,7 +15,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('exp', 'ExpController');
+Route::group(['middleware' => 'auth'], function() {
+    Route::resource('exp', 'ExpController');
+});
+
+// Route::resource('exp', 'ExpController');
 
 Route::auth();
 
