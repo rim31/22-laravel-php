@@ -15,11 +15,20 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['middleware' => 'auth'], function() {
-    Route::resource('exp', 'ExpController');
-});
+Route::resource('exp', 'ExpController');
 
-// Route::resource('exp', 'ExpController');
+// User's addresses   OH Yeah !!!
+// ex: /exp/{id}/photo
+Route::resource('exp.photo', 'PhotoController');
+// Route::resource('photo', 'PhotoController');
+
+
+
+Route::get('hotspot', 'HotspotController@create');
+// Route::get('exp/hotspot', 'HotspotController@create');
+Route::post('upload', 'PhotoController@upload');
+Route::get('gallery', 'PhotoController@demo');
+Route::get('exp.{$n}.index', 'PhotoController@index');
 
 Route::auth();
 

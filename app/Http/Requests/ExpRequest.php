@@ -24,8 +24,9 @@ class ExpRequest extends Request
     public function rules()
     {
         return [
-            'name' => 'required', 
-            'adress' => 'required'
+        //on met les element nécessaire pour valider le formulaire
+/*            'name' => 'required', 
+            'adress' => 'required'*/
         ];
     }
 }

@@ -20,7 +20,6 @@
                     <div class="form-group">
                         {!! Form::label('adress', 'adress') !!}
                         {!! Form::textarea('adress', null, ['class' =>'form-control']) !!}
-                        <!-- {{Form :: textarea('adress', null, [ 'size' => '30x4'])}} -->
                     </div>
 
                     <div class="form-group">
@@ -47,17 +46,9 @@
                     </div>
                     <div class="form-group">
                         Photo{!! Form::file('image') !!}
-                        Request::file('image')->move('img/datasheets', 'nom_personnalisé.jpg');
-                        <!-- {!! Form::text('image', null, ['class' =>'form-control']) !!} -->
                     </div>
                     <div class="form-group">
                         video{!! Form::file('video') !!}
-                        <div class="form-group">
-                            {!! Form::label('image') !!}
-                            {!! Form::file('image', null) !!}
-                            {!! Form::text('image', null, array('placeholder'=>'photo name')) !!}
-                        </div>
-
                     </div>
 
                     <button class="btn btn-primary">Envoyer</button>

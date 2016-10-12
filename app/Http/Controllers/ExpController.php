@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 
 // use App\Http\Requests;
 
+use Illuminate\Support\Facades\Input;
 use App\Exp;
+use App\Image;
 use App\JoinUserExp;
 use Auth;
 use DB;
@@ -51,7 +53,13 @@ class ExpController extends Controller
             'id_user' => Auth::user()->id,
             'id_exp' => $nouvel->id
         ]);
-
+//création et insertion dossier photo
+        if (Input::hasFile($nouvel->photo)) {
+            $image = Input::file($nouvel->photo);
+            $image->move('img/uploads', $image->photo);
+            // echo '<img src="img/uploads' . $files->getclientOriginalName() . '"/>';
+            die();
+        }
         return redirect()->route('exp.index')->with('message', 'new experience added !');
     }
 
@@ -92,7 +100,6 @@ class ExpController extends Controller
     {
         $exp->update($request->all());
         return redirect()->route('exp.index')->with('message', 'Experience modified !');
-
     }
 
     /**
@@ -105,6 +112,5 @@ class ExpController extends Controller
     {
         $exp->delete();
         return redirect()->route('exp.index')->with('message', 'Experience deleted !');
-
     }
 }
