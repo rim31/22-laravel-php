@@ -49,4 +49,11 @@ h1{
   background-repeat: no-repeat;
   background-position: contain;
   background-size: 100%;
+  margin: auto;
+}
+
+/*** PAGE GALLERIE PHOTO  ***/
+
+.case_bouton {
+  vertical-sign:middle;
 }

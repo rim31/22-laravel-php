@@ -10,11 +10,14 @@
                 <div class="alert alert-success">{{ Session::get('message') }}</div>
                 @endif
                 <div class="panel-body">
+                    {{ link_to_route('exp.create', 'Add new experience', null, ['class' => 'btn btn-success']) }}
+                    <br>
                     <table class="table">
                         <tr>
                             <th>Nom</th>
                             <th>Action</th>
                             <th>Hotspot</th>
+                            <th>Photo</th>
                         </tr>
                         @foreach($users as $user)
                             @if($user->id_user == Auth::user()->id)
@@ -29,16 +32,27 @@
                                         {!! Form::button('Delete', ['class'=>'btn btn-danger', 'type'=>'submit']) !!}
                                         {!! Form::close() !!}
                                     </td>
-                                    <td><a class="btn btn-info" href="{{ url('hotspot') }}"> Hotspot</a></td>
+                                    <td>
+                                        @if($exp->photo)
+                                            <a class="btn btn-info" href="{{ url('hotspot') }}"> Hotspot</a></td>
+                                        @else
+                                            aucune photo
+                                        @endif
+                                    <td>
+                                        @if($exp->photo)
+                                            <a href="{{route('exp.photo.index',[$exp->id])}}"><img src="/img/{{$exp->id}}/{{$exp->photo}}" alt="{{$exp->photo}}" style="width:200px;height:100px;" /></a>
+                                        @else
+                                            {{ link_to_route('exp.photo.index', 'Gallerie', [$exp->id], ['class' => 'btn btn-info']) }}
+                                        @endif
+                                    </td>
                                     @endif
                                 </tr>
                                 @endforeach
                             @endif
                         @endforeach
-                    </table>            
+                    </table>
                 </div>
             </div>
-            {{ link_to_route('exp.create', 'Add new experience', null, ['class' => 'btn btn-success']) }}
         </div>
     </div>
 </div>

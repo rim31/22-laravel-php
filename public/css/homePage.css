@@ -1,0 +1,21 @@
+/***  CHARTE GRAPHIQUE ***/
+/*
+#73C8A9 Cyan Clouds
+#DEE1B6 morning light
+#E1B866 Soft
+#BD5532 Orange Clouds
+#373B44 lowlight
+#
+
+*/
+
+
+/***  GENERAL RULES ***/
+/***  MAIN CODE ***/
+#logo{
+	width:15%;
+}
+
+#logo > img{
+	width: 100px;
+}

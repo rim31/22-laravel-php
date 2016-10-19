@@ -17,6 +17,7 @@ class CreateImagesTable extends Migration
             $table->string('name');
             $table->string('description');
             $table->string('cover_image');
+            $table->string('actif')->default(1);
             $table->string('option_1');
             $table->string('option_2');
             $table->string('option_3');

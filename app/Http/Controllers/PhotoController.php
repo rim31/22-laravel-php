@@ -3,18 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
-use File;
-use App\Http\Requests;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Redirect;
+
 use App\Http\Controllers\Controller;
-use \Storage;
 use App\UploadedFile;
 use App\Exp;
 use App\Image;
 use App\JoinExpImage;
 use App\JoinUserExp;
+use App\Http\Requests;
 
+use \Storage;
+use File;
 use DB;
 
 class PhotoController extends Controller
@@ -24,13 +25,16 @@ class PhotoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index(Exp $exp)
     {
+        var_dump($exp->id);
         $exps = Exp::all();
         $users = JoinUserExp::all();
         $images = Image::all();
         $joins = JoinExpImage::all();
-        return view('exps.photos.index', compact('exps', 'users', 'images', 'joins'));
+
+        return view('exps.photos.index', compact(
+            'exps', 'users', 'images', 'joins', 'exp'));
     }
 
     /**
@@ -38,10 +42,10 @@ class PhotoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create(Exp $exp)
     {
-        // var_dump($request->id);die();
-        return view('exps.photos.create');
+        var_dump($exp->id);
+        return view('exps.photos.create', compact('exp'));
     }
 
     /**
@@ -50,42 +54,51 @@ class PhotoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Exp $exp, Request $request)
     {
+        var_dump($exp->id);
         //on créé le dossier image s'il n'existe pas
         if (!file_exists(public_path('img/'))) {
         File::makeDirectory(public_path('img/'));
+        echo "Creation ";
         }
+        echo "dossier img | ";
         //on créé le dossier de l'exp s'il n'existe pas
-        if (!file_exists(public_path('img/'.$request->id))) {
-        File::makeDirectory(public_path('img/'.$request->id));
+        if (!file_exists(public_path('img/'.$exp->id))) {
+        File::makeDirectory(public_path('img/'.$exp->id));
+        echo "Creation ";
         }
+        echo "sous dossier img " . $exp->id;
         //on injecte l'image dans ce dossier
         if (Input::hasFile('file')) {
             $file = Input::file('file');
-            $file->move('img/'.$request->id, $file->getClientOriginalName());
-            //on affiche l'image
-            echo '<img src="img/'.$request->id.'/' . $file->getClientOriginalName() .'"/>';
-            echo "controller upload <BR/>";
-
-            //il faut insérer le nom de la photo dans la table Photo
-            $nouvel = Image::create($request->all());
-            // il faut aussi associer la jointure avec l'id
+            //insérer le nom de la photo dans la table image
+            $name = $file->getClientOriginalName();
+            //il faut insérer le nom de la photo dans la table Photo,
+            //Aussi, il faut transformer les images en $id.JPG
+            $nouvel = Image::create([
+                'description' => $file->getClientOriginalName(),
+                'option_1' => '1',
+                ]);
+            // il faut aussi associer la jointure avec l'id, OK !!
             $join = JoinExpImage::create([
-                'exp_id' => $request->id,
+                'exp_id' => $exp->id,
                 'image_id' => $nouvel->id
             ]);
-            var_dump($request->id); die();
 
-//insert photo comme un avatar
-            if ($request->hasFile('file')) {
-                $file = $request->file('file');
-                $filename = $nouvel->id . '.' .$file->getClientOriginalExtension();
-                Image::make($file)->resize(300, 300)->save(public_path('img/'. $request->id . $filename));
-            }
+            $nouvel->update(['name' => $nouvel->id.'.'.$file->getClientOriginalExtension()]);
+            var_dump(" | ". $nouvel->name . " | ");
+
+            //$file->move('img/'.$exp->id, $nouvel->id.'.'.$file->getClientOriginalExtension());//prend le dernier l'extension du fichier image
+            // echo '<img src="img/'.$exp->id.'/'. $nouvel->id.'.'.$file->getClientOriginalExtension().'"/>';
+            $file->move('img/'.$exp->id, $nouvel->name);//prend le dernier l'extension du fichier image
+
+            echo '<img src="/img/'.$exp->id.'/'. $nouvel->name.'"/>';
+
+            echo "<BRr>il y a un fichier";
+
         }
-
-        return redirect()->route('exp.images.index')->with('message', 'new experience added !');
+        return redirect()->route('exp.photo.index', [$exp])->with('message', 'new experience added !');
 
     }
 
@@ -129,90 +142,29 @@ class PhotoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Image $image)
+    public function destroy(Request $request, Exp $exp)
     {
-        $image->delete();
-        return redirect()->route('exp.image.index')->with('message', 'Image deleted !');
 
+        // var_dump($image->id);
+        // $image = Image::findOrFail($request->id);
+        // $exp = Image::findOrFail($request->exp);
+
+/*        var_dump($request->exp);//id de  l'experience
+        var_dump($request->image);//id de la photo dans l'experience*/
+        $image = Image::find($request->image);
+        // $image = Image::findOrFail($request->id);
+        // $exp = Exp::findOrFail($request->exp);
+/*        var_dump($image);
+*/        $image->delete();
+        return redirect()->route('exp.photo.index', [$exp])->with('message', 'Image deleted !');
     }
 
-//======================================================================
-
-
-    // public function handleUpload(Request $request){
-
-    //     // if($request->hasFile('file')){
-    //         $file = $request->file('file');
-    //         $allowedFileTypes = config('app.allowedFileTypes');
-    //         $maxFileSize = config('app.maxFileSize');
-    //         $rules = [
-    //             'file' => 'required|mimes:'.$allowedFileTypes.'|max:'.$maxFileSize
-    //         ];
-    //         $this->validate($request, $rules);
-    //         $fileName = $file->getClientOriginalName();
-    //         $destinationPath = config('app.fileDestinationPath').'/'.$fileName;
-    //         $uploaded = Storage::put($destinationPath, file_get_contents($file->getRealPath()));
-
-    //         if($uploaded){
-    //             UploadedFile::create([
-    //                 'filename' => $fileName
-    //             ]);
-    //         }
-    //     // }
-
-    //     return redirect()->to('/upload');
-    // }
-
-    // public function upload1(){
-    //     $directory = config('app.fileDestinationPath');
-    //     // $files = Storage::files($directory);
-    //     $files = UploadedFile::all();
-    //     return view('files.upload')->with(array('files' => $files));
-    // }
-
-    // public function deleteFile($id){
-    //     $file = UploadedFile::find($id);
-    //     Storage::delete(config('app.fileDestinationPath').'/'.$file->filename);
-    //     $file->delete();
-    //     return redirect()->to('/upload');
-    // }
-
-/**==================================================**/
-
-    public function upload(Request $request)
-    {
-        //on créé le dossier image s'il n'existe pas
-        if (!file_exists(public_path('img/'))) {
-        File::makeDirectory(public_path('img/'));
-        }
-        //on créé le dossier de l'exp s'il n'existe pas
-        if (!file_exists(public_path('img/'.$request->id))) {
-        File::makeDirectory(public_path('img/'.$request->id));
-        }
-        //on injecte l'image dans ce dossier
-        if (Input::hasFile('file')) {
-            $file = Input::file('file');
-            $file->move('img/'.$request->id, $file->getClientOriginalName());
-            echo '<img src="img/'.$request->id.'/' . $file->getClientOriginalName() .'"/>';
-            echo "controller upload <BR/>";
-        }
-        var_dump($request->id); die();
-                //il faut insérer le nom de la photo dans la table Photo
-        $join = Image::create([
-            'id_user' => Auth::user()->id,
-            'id_exp' => $nouvel->id
-        ]);
-                // il faut aussi associer la jointure avec l'id
-    }
-
-    public function demo()
-    {
-        echo "Coucou : controller Démo dans PhototController";
-        $exp = Image::find($id);
-
-        $exp->load('images');
-
-        return view('exps.show', compact('exp')); // whatever your view is called
-    }
-
+//     public function cover(Request $request, Exp $exp, Image $image)
+// {
+//     echo "Coucou : controller Cover dans PhototController";
+//     var_dump($image->id);
+//     var_dump($exp->id);die();
+//
+//     return view('hotspot.demo');
+// }
 }

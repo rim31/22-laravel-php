@@ -16,6 +16,7 @@ class CreateJoinExpImagesTable extends Migration
             $table->increments('id');
             $table->integer('exp_id');
             $table->integer('image_id');
+            $table->string('actif')->default(1);
             $table->timestamps();
         });
     }

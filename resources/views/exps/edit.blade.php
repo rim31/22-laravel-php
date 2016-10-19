@@ -11,67 +11,61 @@
                     <label>gallerie photos</label>
                     {{ link_to_route('exp.photo.index', 'Gallerie', [$exp->id], ['class' => 'btn btn-info']) }}
 
-
-
                     {!! Form::model($exp, array('route' => ['exp.update', $exp->id], 'method'=>'PUT')) !!}
 
                     Editer votre expérience
+                    Nouvelle expérience
                     <div class="form-group">
                         {!! Form::label('name', 'Titre') !!}
                         {!! Form::text('name', null, ['class' =>'form-control']) !!}
                     </div>
-                <div class="col-sm-6">
-                    <div class="form-group">
-                        {!! Form::label('adress', 'Adresse') !!}
-                        {!! Form::textarea('adress', null, ['class' =>'form-control']) !!}
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            {!! Form::label('about', 'informations') !!}
+                            {!! Form::textarea('about', null, ['class' =>'form-control','maxlength' => '50', 'rows'=> '3' ]) !!}
+                        </div>
+                        <div class="form-group">
+                            {!! Form::label('price', 'prix') !!}
+                            {!! Form::text('price', null, ['class' =>'form-control']) !!}
+                        </div>
                     </div>
-                </div>
-                <div class="col-sm-6">
-
-                    <div class="form-group">
-                        {!! Form::label('price', 'Prix (€)') !!}
-                        {!! Form::text('price', null, ['class' =>'form-control']) !!}
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            {!! Form::label('adress', 'adresse') !!}
+                            {!! Form::textarea('adress', null, ['class' =>'form-control','maxlength' => '50', 'rows'=> '3' ]) !!}
+                        </div>
+                        <div class="form-group">
+                            {!! Form::label('name_owner', 'propriétaire') !!}
+                            {!! Form::text('name_owner', null, ['class' =>'form-control']) !!}
+                        </div>
                     </div>
-
-                    <div class="form-group">
-                        {!! Form::label('name_owner', 'Contact') !!}
-                        {!! Form::text('name_owner', null, ['class' =>'form-control']) !!}
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            Surface(m²) {!! Form::selectRange('surface', 1, 9999)!!}
+                            | Room {!! Form::selectRange('room', 1, 20)!!}
+                            | Level {!! Form::selectRange('level', 1, 20)!!}
+                            | Parking{{ Form::checkbox('parking', '1') }}
+                            | Elevator{{ Form::checkbox('lift', '1') }}
+                            | Heat electricity{{ Form::checkbox('electricity', '1') }}
+                            | Class energy {!! Form::select('class_nrj', array('A' => 'A', 'B' => 'B','C' => 'C','D' => 'D','E' => 'E',), 'E')!!}
+                            | Class gaz {!! Form::select('class_gaz', array('A' => 'A', 'B' => 'B','C' => 'C','D' => 'D','E' => 'E',), 'E')!!}
+                            | dispo{{ Form::checkbox('availability', '1') }}
+                        </div>
                     </div>
-
-                    <div class="form-group">
-                        Surface(m²) {!! Form::selectRange('surface', 1, 9999)!!}
-                        | Pièce {!! Form::selectRange('room', 1, 20)!!}
-                        | niveau {!! Form::selectRange('level', 1, 20)!!}
-                        | Parking{{ Form::checkbox('parking', '1') }}
-                        | Ascenceur{{ Form::checkbox('lift', '1') }}
-                        | chauffage elec{{ Form::checkbox('electricity', '1') }}
-                        | Class energie {!! Form::select('class_nrj', array('A' => 'A', 'B' => 'B','C' => 'C','D' => 'D','E' => 'E',), 'E')!!}
-                        | Class gaz {!! Form::select('class_gaz', array('A' => 'A', 'B' => 'B','C' => 'C','D' => 'D','E' => 'E',), 'E')!!}
-                        | dispo{{ Form::checkbox('availability', '1') }}
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label for="photo">PHOTO</label> (obligatoire){!! Form::file('photo') !!}
+                        </div>
                     </div>
-                </div>
-
-                    <div class="form-group">
-                        <label for="">Photo</label>{!! Form::file('image') !!}
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label for="video">VIDEO</label> (optionnel){!! Form::file('video') !!}
+                        </div>
                     </div>
-                    <div class="form-group">
-                        video{!! Form::file('video') !!}
+                    <div class="col-sm-4">
+                        <button class="btn btn-primary">Envoyer</button>
+                        {!! Form::close() !!}
                     </div>
-                    <button class="btn btn-primary">Envoyer</button>
-
-                    <h1>photo upload</h1>
-
-                    {!! Form::close() !!}
-
-                    <form action="{{ URL::to('upload')}}" method="post" enctype="multipart/form-data">
-                        <label>up une photo</label>
-                        <input type="file" name="file" id="file">
-                        <input type="submit" name="submit" value="upload">
-                        <input type="text" name="id" value="{{$exp->id}}" hidden>
-                            {{$exp->id}}
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                    </form>
-
 
 
                 </div>
@@ -88,7 +82,3 @@
     </div>
 </div>
 @endsection
-
-
-
-

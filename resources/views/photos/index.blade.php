@@ -11,7 +11,7 @@
 				@endif
 				<div class="panel-body">
 
-
+                <h1>INDEX photo</h1>
                         @foreach($users as $user)
                             @if($user->id_user == Auth::user()->id)
                                 @foreach($exps as $exp)
@@ -34,11 +34,14 @@
 						<!-- <img src="/img/{{$exp->id}}/1.JPG" />
 						<img src="/img/1/1.JPG" /> -->
 
-                        @foreach($images as $image)
-							{{ $image->name}}
-						@endforeach
                         @foreach($joins as $join)
-							{{ $join->exp_id}} / {{ $join->image_id}}
+                            @if($exp->id == $join->exp_id)
+                                @foreach($images as $image)
+							        if ($image->id ==  $join->image_id ) 
+                                         <img src="/img/{{$exp->id}}/{{ $image->name}}" />                                        
+                                    @endif
+						          @endforeach
+                            @endif
 						@endforeach
 
 				</div>

@@ -20,11 +20,13 @@ class CreateUsersTable extends Migration
             $table->string('avatar');
             $table->string('society');
             $table->string('validate');
+            $table->string('actif')->default(1);
+            $table->integer('option_1');
             $table->rememberToken();
             $table->timestamps();
         });
     }
-
+}
     /**
      * Reverse the migrations.
      *

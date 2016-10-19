@@ -16,6 +16,7 @@ class CreateJoinUserExpsTable extends Migration
             $table->increments('id');
             $table->integer('id_user');
             $table->integer('id_exp');
+            $table->string('actif')->default(1);
             $table->timestamps();
         });
     }

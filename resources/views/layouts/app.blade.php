@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,20 +10,28 @@
     <!-- Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700">
+    <!--     <link rel="stylesheet" href="../../public/bootstrapFONTS/>     -->
 
     <!-- Styles -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
 
-    <style>
-    body {
-        font-family: 'Lato';
-    }
 
-    .fa-btn {
-        margin-right: 6px;
-    }
-    </style>
+    <!--     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+-->    {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
+<link rel="stylesheet" type="text/css" href="/css/bootstrapCSS/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/css/bootstrapCSS/bootstrap-theme.min.css">
+<link rel="stylesheet" type="text/css" href="/css/homePage.css">
+
+<style>
+body {
+    font-family: 'Lato';
+    background-image: url(/img/background.jpg);
+    background-color:#73C8A9 ;
+}
+
+.fa-btn {
+    margin-right: 6px;
+}
+</style>
 </head>
 <body id="app-layout">
     <div class="3dPhoto">
@@ -39,19 +47,20 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
                         </button>
 
                         <!-- Branding Image -->
                         <a class="navbar-brand" href="{{ url('/') }}">
-                            immoVR XXII
                         </a>
                     </div>
 
                     <div class="collapse navbar-collapse" id="app-navbar-collapse">
                         <!-- Left Side Of Navbar -->
                         <ul class="nav navbar-nav">
+                            <li><a id="logo" href="{{ url('/') }}"><img src="/img/immovr.png" alt="immovr" ></a></li>
                             <li><a href="{{ url('/exp') }}">Experience</a></li>
-                            <li><a href="{{ url('/gallery') }}">Gallerie</a></li>
+                            <li><a href="{{ url('/demo') }}">Carousel</a></li>
 
                         </ul>
 
@@ -91,10 +100,13 @@
 
             <!-- JavaScripts -->
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js" integrity="sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb" crossorigin="anonymous"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+
+            <!-- script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script> -->
+
             {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
             <!--         <script src="//cdnjs.cloudflare.com/ajax/libs/interact.js/1.2.6/interact.min.js"></script>//JS de l'interaction -->
-
+            <script src="/js/bootstrapJS/bootstrap.min.js"></script>
 
         </main>
     </div>

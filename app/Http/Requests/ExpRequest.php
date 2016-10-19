@@ -25,8 +25,9 @@ class ExpRequest extends Request
     {
         return [
         //on met les element nécessaire pour valider le formulaire
-/*            'name' => 'required', 
-            'adress' => 'required'*/
+            'name' => 'required',
+            'adress' => 'required',
+            // 'photo' => 'required'
         ];
     }
 }

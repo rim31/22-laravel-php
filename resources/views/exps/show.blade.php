@@ -8,6 +8,9 @@
                 <DIV class="panel-heading">{{ $exp->name}}</DIV>
 
                 <DIV class="panel-body">
+                    Informations : </BR>
+                    <h2>{{ $exp->about }}</h2>
+
                     address : </BR>
                     <h2>{{ $exp->adress }}</h2>
 
@@ -23,7 +26,7 @@
                         Surface {{ $exp->surface }}m²
                         | Room {{ $exp->room}}
                         | Level {{ $exp->level}}
-                        | 
+                        |
                         @if(!$exp->parking)
                             no
                             @endif
@@ -32,11 +35,11 @@
                             no
                         @endif
                         | Elevator
-                        | 
+                        |
                         | Heat @if(!$exp->electicity)
                           Gas
                         @else
-                          Electricity  
+                          Electricity
                         @endif
                         | Class energy {{ $exp->class_nrj}}
                         | Class gaz {{ $exp->class_gaz }}
