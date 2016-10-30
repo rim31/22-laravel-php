@@ -8,14 +8,45 @@
 #
 
 */
-
-
 /***  GENERAL RULES ***/
 /***  MAIN CODE ***/
+.searchBar{
+	margin-top: 10px;
+};
+
+
+.carreau1{
+	width: 100%;
+	height: 200px;
+	background-color: green;
+}
+
+.carreau2{
+	width: 100%;
+	height: 200px;
+	background-color: yellow;
+}
+
+.carreau3{
+	width: 100%;
+	height: 200px;
+	background-color: yellow;
+}
+
+.photo{
+	width: 100%;
+}
+
+.miniature{
+	width: 100%;
+}
+
 #logo{
 	width:15%;
+	
 }
 
 #logo > img{
 	width: 100px;
 }
+

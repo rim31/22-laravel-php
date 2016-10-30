@@ -57,8 +57,8 @@
                     <DIV class="form-group">
                         video{!! Form::file('video') !!}
                     </DIV>
-
-                    <button class="btn btn-primary">Envoyer</button>
+                    {{ link_to_route('exp.index', 'Retour', [$exp->id], ['class' => 'btn btn-info']) }}
+                    <!-- <button class="btn btn-primary">Retour</button> -->
                     {!! Form::close() !!}
 
                 </DIV>

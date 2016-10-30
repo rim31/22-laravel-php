@@ -30,10 +30,12 @@ class CreateExpsTable extends Migration
             $table->string('class_gaz');
             $table->string('photo');
             $table->string('video');
+            $table->string('delete');
+            $table->dateTime('time_del');
             $table->string('option_1');
             $table->string('option_2');
             $table->string('option_3');
-            $table->boolean('online')->default(false);
+            $table->boolean('actif')->default(false);
             $table->rememberToken();
             $table->timestamps();
         });

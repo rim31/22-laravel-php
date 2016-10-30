@@ -20,41 +20,37 @@ use DB;
 
 class ExtraController extends Controller
 {
-    /***
-    *
-    *
-    <!-- {!! Form::open(array('route'=>['cover', $exp->id, $image->id], 'method'=>'POST'))!!}
-    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-    <input type="text" name="exp" value="{{$exp->id}}" hidden>
-    <input type="text" name="photo" value="{{image->id}}" hidden>
-    {!! Form::button('Choix', ['class'=>'btn btn-default', 'type'=>'submit']) !!}
-    {!! Form::close() !!} -->
-    *
-    *
-    ***/
-    public function cover(Request $request, Exp $exp, Image $image)
-    {
-        // var_dump ($exp);
-        // var_dump ($image);
-        var_dump ($request->exp);
-        var_dump ($request->photo);
-        echo "\n Coucou : controller Cover dans PhototController";
-        //mettre la photo de couverture dans la base de données adéquat
-        // $posts = DB::table('exps')->get();
-        $covers = DB::select('select * from images where cover_image = ?', [1]);
-        var_dump ($covers);
-        // die();
 
-        // $covers->cover_image = '0';
+    
+  public function cover(Request $request, Exp $exp)
+{
+  echo "Coucou : controller Cover dans PhototController";
+  var_dump($request->photo);
+  die();
+  var_dump($exp->id);
+  $exps = Exp::all();
+  $users = JoinUserExp::all();
+  $images = Image::all();
+  $joins = JoinExpImage::all();
+  // $up = Exp::where('id', $exp->id)->get();
 
-        $users = JoinUserExp::all();
-        $images = Image::all();
-        $joins = JoinExpImage::all();
-        // die();
+  //remise a zero du la photo de couverture
+  DB::table('users')
+            ->where('id', $exp->id)
+            ->update(['photo' => $request->photo]);
 
-        return redirect()->route('exp.photo.index', [$request->exp])->with('message', 'Photo de couverture à jour !');
+  // $joins = JoinExpImage::where('exp_id', $exp->id)->get();
+
+   return view('/', compact('exps', 'users', 'images', 'joins', 'exp'));
+}
 
 
-    }
 
+
+  public function demo2(Request $request, Exp $exp, Image $image)
+{
+  echo "Coucou : controller Cover dans PhototController";
+  var_dump($request->name);die();
+  return view('demo.demo');
+}
 }

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 // use App\Http\Requests;
-
+use Illuminate\Pagination\LengthAwarePagination;
 use Illuminate\Support\Facades\Input;
 use App\Exp;
 use App\Image;
@@ -19,6 +19,7 @@ use \Storage;
 use File;
 use Auth;
 use DB;
+use Carbon\Carbon;
 
 class ExpController extends Controller
 {
@@ -29,10 +30,20 @@ class ExpController extends Controller
      */
     public function index()
     {
-        $exps = Exp::all();
-        $images = Image::find(Auth::user()->id);//on en
+        $exps = DB::table('exps')->where('delete', '!=', '1')->paginate(5);//pagination des experiences
+        $images = Image::find(Auth::user()->id);//pour la cover
         $users = JoinUserExp::all();
+        // var_dump($users);
         return view('exps.index', compact('exps', 'users', 'images'));
+
+        // $exps = DB::table('exps')->paginate(5);//pagination des experiences
+        // $images = Image::find(Auth::user()->id);//pour la cover
+        // $users = JoinUserExp::all();
+        // // var_dump(Auth::user()->id);die();
+        // // $users = JoinUserExp::where('id_user', Auth::user()->id);//pour la cover
+        // var_dump($users);
+        //
+        // return view('exps.index', compact('exps', 'users', 'images'));
     }
 
     /**
@@ -140,7 +151,19 @@ class ExpController extends Controller
      */
     public function destroy(Exp $exp)
     {
-        $exp->delete();
+        var_dump($exp->id);//id de la photo dans l'experience*/
+
+        $joins = JoinUserExp::find($exp->id);
+        $joins->update([
+            'delete' => 1,
+            'time_del' => Carbon::now()
+        ]);
+        $id = Exp::find($exp->id);
+        $id->update([
+            'delete' => 1,
+            'time_del' => Carbon::now()
+        ]);
+        // $exp->delete();
         return redirect()->route('exp.index')->with('message', 'Experience deleted !');
     }
 }

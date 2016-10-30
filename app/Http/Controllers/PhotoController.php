@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Pagination\LengthAwarePagination;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
@@ -17,6 +18,8 @@ use App\Http\Requests;
 use \Storage;
 use File;
 use DB;
+use Carbon\Carbon;
+
 
 class PhotoController extends Controller
 {
@@ -29,12 +32,37 @@ class PhotoController extends Controller
     {
         var_dump($exp->id);
         $exps = Exp::all();
-        $users = JoinUserExp::all();
-        $images = Image::all();
-        $joins = JoinExpImage::all();
+        // $users = JoinUserExp::all();
+        $users = JoinUserExp::where('id_user', $exp->id)->get();
+        //je selectionne seulement les Id des images correspondant a l'exp
+        $joins = JoinExpImage::where('exp_id', $exp->id)->get();
+        // $joins = JoinExpImage::all();
 
+        //on recupere seulement les images de l'exp
+        // $images = Image::all();
+
+
+    // @foreach($joins as $join)
+    // @if($exp->id == $join->exp_id)
+    // @foreach($images as $image)
+    // @if($image->id == $join->image_id)
+
+        // $images = DB::table('images')
+        //             ->where($joins), 'id', '=', $exp->id)
+        //             ->get();
+
+
+        // $users = DB::table('users')
+        //         ->join('contacts', 'users.id', '=', 'contacts.user_id')
+        //         ->join('orders', 'users.id', '=', 'orders.user_id')
+        //         ->select('users.*', 'contacts.phone', 'orders.price')
+        //         ->get();
+
+
+        // return view('exps.photos.index', compact(
+        //     'exps', 'users', 'images', 'joins', 'exp'));
         return view('exps.photos.index', compact(
-            'exps', 'users', 'images', 'joins', 'exp'));
+            'exps', 'users', 'joins', 'exp'));
     }
 
     /**
@@ -119,9 +147,9 @@ class PhotoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Image $image)
+    public function edit(Exp $exp, Image $image)
     {
-        return view('exps.images.edit', compact('image'));
+        return view('exps.images.edit', compact('exp', 'image'));
     }
 
     /**
@@ -151,20 +179,27 @@ class PhotoController extends Controller
 
 /*        var_dump($request->exp);//id de  l'experience
         var_dump($request->image);//id de la photo dans l'experience*/
+
+        $joins = JoinExpImage::find($request->image);
+        $joins->update([
+            'delete' => 1,
+            'time_del' => Carbon::now()
+        ]);
         $image = Image::find($request->image);
+        $image->update([
+            'delete' => 1,
+            'time_del' => Carbon::now()
+        ]);
+        // var_dump($joins->time_del);die();//id de la photo dans l'experience*/
+
+
+        // $image = Image::find($request->image);--
         // $image = Image::findOrFail($request->id);
         // $exp = Exp::findOrFail($request->exp);
 /*        var_dump($image);
-*/        $image->delete();
+*/
+// $image->delete();-- File::delete('/path/to/image/file');
         return redirect()->route('exp.photo.index', [$exp])->with('message', 'Image deleted !');
     }
 
-//     public function cover(Request $request, Exp $exp, Image $image)
-// {
-//     echo "Coucou : controller Cover dans PhototController";
-//     var_dump($image->id);
-//     var_dump($exp->id);die();
-//
-//     return view('hotspot.demo');
-// }
 }

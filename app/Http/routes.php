@@ -17,24 +17,23 @@ Route::get('/', 'HomeController@welcome');
 
 Route::resource('exp', 'ExpController');
 
+
 // User's addresses   OH Yeah !!!
 // ex: /exp/{id}/photo
 Route::resource('exp.photo', 'PhotoController');
-// Route::resource('photo', 'PhotoController');
-Route::post('exp.photo.cover', ['uses' => 'ExtraController@cover', 'as' => 'cover', 'middleware' => 'auth']);
+//on enchaine les pages ex : exp/{id}/photo/{id}/hotspot
+Route::resource('exp.photo.hotspot', 'HotspotController');
 
 
+//test de page controller, middelware; redirection et renommer
+Route::get('cover', 'ExtraController@cover');
 
-Route::get('hotspot', 'HotspotController@create');
-// Route::get('demo2', ['uses' => 'HotspotController@demo2', 'as' => 'cover', 'middleware' => 'auth']);
-
-// Route::get('demo2', 'HotspotController@demo2');
-Route::get('demo', 'HotspotController@demo');
-
-
-Route::get('test', 'HotspotController@carousel');
-// Route::get('cover', 'HotspotController@cover');
-
+// Route::get('hotspot', 'ExtraController@create');
+Route::get('demo', 'ExtraController@demo2');
+Route::get('test', 'ExtraController@carousel');
+Route::get('demo2', ['uses' => 'ExtraController@demo2', 'as' => 'cover', 'middleware' => 'auth']);
+// Route::get('demo2', 'ExtraController@demo2');
+// Route::get('cover', 'ExtraController@cover');
 // Route::post('upload', 'PhotoController@upload');
 // Route::get('gallery', 'PhotoController@demo');
 // Route::get('exp.{$n}.index', 'PhotoController@index');

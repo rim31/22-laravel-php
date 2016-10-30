@@ -16,6 +16,9 @@ class CreateJoinExpImagesTable extends Migration
             $table->increments('id');
             $table->integer('exp_id');
             $table->integer('image_id');
+            $table->integer('cover');
+            $table->string('delete');
+            $table->dateTime('time_del');
             $table->string('actif')->default(1);
             $table->timestamps();
         });

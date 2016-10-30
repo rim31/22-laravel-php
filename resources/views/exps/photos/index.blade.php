@@ -10,55 +10,53 @@
 				<div class="alert alert-success">{{ Session::get('message') }}</div>
 				@endif
 				<div class="panel-body">
-					<h1>{{ link_to_route('exp.show', $exp->name, [$exp->id]) }}</h1>{{$exp->adress}}<BR>
-					<BR>
-					{{ link_to_route('exp.photo.create', 'Ajouter photo', [$exp->id], ['class' => 'btn btn-success']) }}
-                     <table class="table">
-                        <tr>
-                            <th>Photo</th>
-                            <th>Action</th>
-                            <th>Editer</th>
-                            <th>Photo de couverture</th>
-                        </tr>
-                        <tr>
-					<BR>
-					@foreach($joins as $join)
-					@if($exp->id == $join->exp_id)
-					@foreach($images as $image)
-						@if($image->id == $join->image_id)
- 						<td><img src="/img/{{$exp->id}}/{{$image->name}}" alt="/img/{{$exp->id}}/{{$image->name}}" style="width:200px;height:100px;"/> </td>
-						<td><a class="btn btn-info" href="{{ url('hotspot') }}"> Editer hotspot</a> </td>
-						<td>{!! Form::open(array('route'=>['exp.photo.destroy', $exp->id, $image->id], 'method'=>'DELETE')) !!}
-					    <input type="text" name="image" value="{{$image->id}}" hidden>
-						{!! Form::button('Effacer la photo', ['class'=>'btn btn-danger', 'type'=>'submit']) !!} </td>
-						{!! Form::close() !!}
-						</td>
-						<td>
-							@if(!$image->cover_image)
-							{!! Form::open(array('route'=>['cover', $exp->id, $image->id], 'method'=>'POST'))!!}
-							<input type="text" name="exp" value="{{$exp->id}}" hidden>
-							<input type="text" name="photo" value="{{$image->id}}" hidden>
-							<input type="hidden" name="_token" value="{{ csrf_token() }}">
-							{!! Form::button('Choix', ['class'=>'btn btn-default', 'type'=>'submit']) !!}
-							{!! Form::close() !!}
-							exp n°{{$exp->id}}
-							photo n°{{$image->id}}
-							@else
-							<td><img src="/img/{{$exp->id}}/{{$image->name}}" alt="/img/{{$exp->id}}/{{$image->name}}" style="width:200px;height:100px;"/> </td>
-							@endif
+					<h2>{{ link_to_route('exp.photo.hotspot.index', $exp->name, [$exp->id, 0]) }}</h2>{{$exp->adress}}<BR>
+						<BR>
+							<div class="col-sm-10">
+								{{ link_to_route('exp.photo.create', 'Ajouter photo', [$exp->id], ['class' => 'btn btn-success']) }}
+							</div>
+							<div class="col-sm-2">
+								{{ link_to_route('exp.index', 'Retour', [$exp->id], ['class' => 'btn btn-default']) }}
+							</div>
 
-						</td>
-						</tr>
-						@endif
-					@endforeach
-					@endif
-					@endforeach
-
-
+							<table class="table">
+								<tr>
+									<th>Photo</th>
+									<th>Action</th>
+									<th>Editer</th>
+									<th>Photo de couverture</th>
+								</tr>
+								<tr>
+									@for ($i = 0; $i < sizeOf($joins); $i++)
+									@if($joins[$i]->delete != 1)
+									<td>
+										/img/{{$exp->id}}/{{$joins[$i]->id}}.JPG
+										<img src="{{ URL::asset('/img/'.$exp->id.'/'.$joins[$i]->id.'.JPG') }}"
+										alt="immovr" class="photo" style="width:200px;height:100px;">
+									</td>
+									<td>
+										{{ link_to_route('exp.photo.hotspot.create', 'Editer spot', [$exp->id, $joins[$i]->id], ['class' => 'btn btn-info']) }}
+									</td>
+									<td>{!! Form::open(array('route'=>['exp.photo.destroy', $exp->id, $joins[$i]->id], 'method'=>'DELETE')) !!}
+										<input type="text" name="image" value="{{$joins[$i]->id}}" hidden>
+										{!! Form::button('Effacer la photo', ['class'=>'btn btn-danger', 'type'=>'submit']) !!}
+									</td>
+									{!! Form::close() !!}
+									<td>
+										{!! Form::open(array('route'=>['cover', $exp->id, $joins[$i]->id])) !!}
+										{!! Form::button('Choix', ['class'=>'btn btn-default', 'type'=>'submit']) !!}
+										{!! Form::close() !!}
+										{{ link_to_route('exp.photo.hotspot.index', 'gallerie', [$exp->id, $joins[$i]->id], ['class' => 'btn btn-info']) }}
+									</td>
+									@endif
+								</tr>
+								@endfor
+							</table>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
-
 @endsection

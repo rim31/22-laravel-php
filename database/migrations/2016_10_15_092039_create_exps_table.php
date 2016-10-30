@@ -12,7 +12,6 @@ class CreateExpsTable extends Migration
      */
     public function up()
     {
-
         Schema::create('exps', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
@@ -37,6 +36,8 @@ class CreateExpsTable extends Migration
             $table->string('option_2');
             $table->string('option_3');
             $table->boolean('online')->default(false);
+            $table->string('delete');
+            $table->dateTime('time_del');
             $table->rememberToken();
             $table->timestamps();
         });

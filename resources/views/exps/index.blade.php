@@ -23,7 +23,7 @@
                             @if($user->id_user == Auth::user()->id)
                                 @foreach($exps as $exp)
                                 <tr>
-                                  @if($user->id_exp == $exp->id)
+                                  @if($user->id_exp == $exp->id AND $exp->delete != 1)
                                     <td>{{ link_to_route('exp.show', $exp->name, [$exp->id]) }}</td>
                                     <td>
                                         {!! Form::open(array('route'=>['exp.destroy', $exp->id], 'method'=>'DELETE')) !!}
@@ -40,7 +40,9 @@
                                         @endif
                                     <td>
                                         @if($exp->photo)
-                                            <a href="{{route('exp.photo.index',[$exp->id])}}"><img src="/img/{{$exp->id}}/{{$exp->photo}}" alt="{{$exp->photo}}" style="width:200px;height:100px;" /></a>
+                                            <a href="{{route('exp.photo.index',[$exp->id])}}"> <img src="{{ URL::asset('/img/'.$exp->id.'/'.$exp->photo) }}"
+                                            alt="{{$exp->photo}}" style="width:200px;height:100px;" /></a>
+
                                         @else
                                             {{ link_to_route('exp.photo.index', 'Gallerie', [$exp->id], ['class' => 'btn btn-info']) }}
                                         @endif
@@ -51,9 +53,17 @@
                             @endif
                         @endforeach
                     </table>
+
+                    <!-- pagination-->
+                    {{ $exps->links() }}
+
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+
+<!--   modal -->
+
 @endsection

@@ -6,9 +6,11 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'CreateExpsTable' => $baseDir . '/database/migrations/2016_10_15_092039_create_exps_table.php',
+    'CreateExpsTable' => $baseDir . '/database/migrations/2016_10_07_080947_create_exps_table.php',
+    'CreateHotspotsTable' => $baseDir . '/database/migrations/2016_10_18_102428_create_hotspots_table.php',
     'CreateImagesTable' => $baseDir . '/database/migrations/2016_10_11_122249_create_images_table.php',
     'CreateJoinExpImagesTable' => $baseDir . '/database/migrations/2016_10_12_135952_create_join_exp_images_table.php',
+    'CreateJoinImageHotspotsTable' => $baseDir . '/database/migrations/2016_10_18_102457_create_join_image_hotspots_table.php',
     'CreateJoinUserExpsTable' => $baseDir . '/database/migrations/2016_10_10_102112_create_join_user_exps_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',
@@ -84,7 +86,9 @@ return array(
     'Hamcrest\\Type\\IsString' => $vendorDir . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Type/IsString.php',
     'Hamcrest\\Util' => $vendorDir . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Util.php',
     'Hamcrest\\Xml\\HasXPath' => $vendorDir . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Xml/HasXPath.php',
+    'Hotspot' => $baseDir . '/database/migrations/2016_10_18_100052_hotspot.php',
     'IlluminateQueueClosure' => $vendorDir . '/laravel/framework/src/Illuminate/Queue/IlluminateQueueClosure.php',
+    'JoinImageSpot' => $baseDir . '/database/migrations/2016_10_18_100203_join_image_spot.php',
     'PHPUnit_Exception' => $vendorDir . '/phpunit/phpunit/src/Exception.php',
     'PHPUnit_Extensions_GroupTestSuite' => $vendorDir . '/phpunit/phpunit/src/Extensions/GroupTestSuite.php',
     'PHPUnit_Extensions_PhptTestCase' => $vendorDir . '/phpunit/phpunit/src/Extensions/PhptTestCase.php',

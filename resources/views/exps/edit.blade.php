@@ -5,17 +5,13 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
-                <div class="panel-heading">Update experiences</div>
+                <div class="panel-heading">Editer votre experience</div>
 
                 <div class="panel-body">
                     <label>gallerie photos</label>
                     {{ link_to_route('exp.photo.index', 'Gallerie', [$exp->id], ['class' => 'btn btn-info']) }}
-
                     {!! Form::model($exp, array('route' => ['exp.update', $exp->id], 'method'=>'PUT')) !!}
-
-                    Editer votre expérience
-                    Nouvelle expérience
-                    <div class="form-group">
+                    <div class="form-group col-sm-12">
                         {!! Form::label('name', 'Titre') !!}
                         {!! Form::text('name', null, ['class' =>'form-control']) !!}
                     </div>
@@ -62,9 +58,12 @@
                             <label for="video">VIDEO</label> (optionnel){!! Form::file('video') !!}
                         </div>
                     </div>
-                    <div class="col-sm-4">
-                        <button class="btn btn-primary">Envoyer</button>
+                    <div class="col-sm-1">
+                    </div>
+                    <div class="col-sm-3">
+                        <button class="btn btn-success">Envoyer</button>
                         {!! Form::close() !!}
+                        {{ link_to_route('exp.index', 'Retour', [$exp->id], ['class' => 'btn btn-danger']) }}
                     </div>
 
 

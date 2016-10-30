@@ -290,9 +290,11 @@ class ComposerStaticInit6a6186357b53948bd0c5aa2ae785e877
     );
 
     public static $classMap = array (
-        'CreateExpsTable' => __DIR__ . '/../..' . '/database/migrations/2016_10_15_092039_create_exps_table.php',
+        'CreateExpsTable' => __DIR__ . '/../..' . '/database/migrations/2016_10_07_080947_create_exps_table.php',
+        'CreateHotspotsTable' => __DIR__ . '/../..' . '/database/migrations/2016_10_18_102428_create_hotspots_table.php',
         'CreateImagesTable' => __DIR__ . '/../..' . '/database/migrations/2016_10_11_122249_create_images_table.php',
         'CreateJoinExpImagesTable' => __DIR__ . '/../..' . '/database/migrations/2016_10_12_135952_create_join_exp_images_table.php',
+        'CreateJoinImageHotspotsTable' => __DIR__ . '/../..' . '/database/migrations/2016_10_18_102457_create_join_image_hotspots_table.php',
         'CreateJoinUserExpsTable' => __DIR__ . '/../..' . '/database/migrations/2016_10_10_102112_create_join_user_exps_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
         'CreateUsersTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_000000_create_users_table.php',
@@ -368,7 +370,9 @@ class ComposerStaticInit6a6186357b53948bd0c5aa2ae785e877
         'Hamcrest\\Type\\IsString' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Type/IsString.php',
         'Hamcrest\\Util' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Util.php',
         'Hamcrest\\Xml\\HasXPath' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Xml/HasXPath.php',
+        'Hotspot' => __DIR__ . '/../..' . '/database/migrations/2016_10_18_100052_hotspot.php',
         'IlluminateQueueClosure' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Queue/IlluminateQueueClosure.php',
+        'JoinImageSpot' => __DIR__ . '/../..' . '/database/migrations/2016_10_18_100203_join_image_spot.php',
         'PHPUnit_Exception' => __DIR__ . '/..' . '/phpunit/phpunit/src/Exception.php',
         'PHPUnit_Extensions_GroupTestSuite' => __DIR__ . '/..' . '/phpunit/phpunit/src/Extensions/GroupTestSuite.php',
         'PHPUnit_Extensions_PhptTestCase' => __DIR__ . '/..' . '/phpunit/phpunit/src/Extensions/PhptTestCase.php',
