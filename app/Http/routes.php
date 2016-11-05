@@ -26,12 +26,12 @@ Route::resource('exp.photo.hotspot', 'HotspotController');
 
 
 //test de page controller, middelware; redirection et renommer
-Route::get('cover', 'ExtraController@cover');
+Route::post('cover', 'ExtraController@cover')->name('cover');
 
 // Route::get('hotspot', 'ExtraController@create');
-Route::get('demo', 'ExtraController@demo2');
+// Route::get('demo', 'ExtraController@demo2');
 Route::get('test', 'ExtraController@carousel');
-Route::get('demo2', ['uses' => 'ExtraController@demo2', 'as' => 'cover', 'middleware' => 'auth']);
+// Route::get('demo2', ['uses' => 'ExtraController@demo2', 'as' => 'cover', 'middleware' => 'auth']);
 // Route::get('demo2', 'ExtraController@demo2');
 // Route::get('cover', 'ExtraController@cover');
 // Route::post('upload', 'PhotoController@upload');

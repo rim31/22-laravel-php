@@ -27,6 +27,7 @@ class ExpRequest extends Request
         //on met les element nécessaire pour valider le formulaire
             'name' => 'required',
             'adress' => 'required',
+            'ville' => 'required',
             // 'photo' => 'required'
         ];
     }

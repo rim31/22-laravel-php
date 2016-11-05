@@ -7,7 +7,7 @@
 
                 <h1><?php echo e($exp->id); ?></h1>
 
-                    <div class="panel-body">
+<!--                     <div class="panel-body">
                         <form action="<?php echo e(route('exp.photo.store', $exp->id)); ?>" method="post" enctype="multipart/form-data">
                             <label>PHOTO</label>
                             <input type="file" name="file" id="file">
@@ -16,7 +16,14 @@
                             <input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">
                         </form>
                     </div>
-
+ -->
+                <form action="<?php echo e(route('exp.photo.store', $exp->id)); ?>" method="post" 
+                enctype="multipart/form-data">
+                <input type="file" name="file" id="file">
+                <input type="text" name="id" value="<?php echo e($exp->id); ?>" hidden>
+                <input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">
+                <input type="submit" value="envoyer" class="btn btn-success">
+                </form>
 
             </div>
              <?php if($errors->has()): ?>

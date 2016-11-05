@@ -7,38 +7,89 @@
       <div class="panel panel-default">
         <div class="panel-heading"><h5><?php echo e($exp->name); ?></h5></div>
 
+        <!--================= boutons generaux ================-->
+          <div class="col-md-8"><h4>Placer votre hotspot sur l'image</h4>
+          </div>
+          <div class="col-md-4">
+          <table>
+
+          <!-- <th>
+              <?php echo Form::open(array('route'=>['exp.photo.show', $exp->id, $image->id], 'method'=>'POST')); ?>
+
+              <input type="text" name="image" value="<?php echo e($image->id); ?>" hidden>
+              <?php echo Form::button('ajouter hotspot', ['class'=>'btn btn-primary', 'type'=>'submit']); ?>
+
+            </th> 
+            <?php echo Form::close(); ?> -->
+            <th>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">
+              Supprimer les hotspots
+            </button>
+            <!-- Modal -->
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">Suppression les hotspots</h4>
+                  </div>
+                  <div class="modal-body">
+                    Voulez-vous vraiment supprimer tous les hotspots?
+                  </div>
+                  <div class="modal-footer" style="display: flex; flex-direction: row;" >
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+                    <?php echo Form::open(array('route'=>['exp.photo.destroy', $exp->id, $image->id], 'method'=>'POST')); ?>
+
+                    <input type="text" name="image" value="<?php echo e($image->id); ?>" hidden>
+                    <?php echo Form::button('Supprimer', ['class'=>'btn btn-danger', 'type'=>'submit']); ?>
+
+                    <?php echo Form::close(); ?>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            </th>
+            <th>
+              <?php echo Form::open(array('route'=>['exp.photo.show', $exp->id, $image->id], 'method'=>'POST')); ?>
+
+              <input type="text" name="image" value="<?php echo e($image->id); ?>" hidden>
+              <?php echo Form::button('Retour gallerie', ['class'=>'btn btn-secondary', 'type'=>'submit']); ?>
+
+              <?php echo Form::close(); ?>
+
+            </th>
+          </table>
+          </div>
+
         <div class="panel-body">
           <div>
-            <h4>Placer votre hotspot sur l'image</h4>
           </div>
           <!-- ======================== test clic ================================ -->
-<!--           <div>
-            <p class="displayOffset"></p>
-          </div> -->
           <div id="Hospot" class="photo hotspotArea">
             <div class="hotspotTarget"></div>
-            <!--           onclick="showCoords(event)" onclick="getCoords(event)">-->
-            <img src="<?php echo e(URL::asset('/img/'.$exp->id.'/'.$photo.'.JPG')); ?>" alt="immovr" class="photo">
-
+             <img src="<?php echo e(URL::asset('/img/'.$exp->id.'/'.$photo.'.PNG')); ?>" alt="immovr" class="photo">
           </div>
-          <!-- ====================miniature selectionnable en ====================== -->
-
+          <!-- ===================miniature selectionnable en ===================== -->
           <div class="row selectLink "><h3>Selectionner la destination</h3>
             <form action="<?php echo e(route('exp.photo.hotspot.store', [$exp->id, $id])); ?>" method="post">
               <div class="btn-group col-md-12" data-toggle="buttons" >
+                <!--on parcours notre table de jointure et on affiche les image_id sauf celle en grand :-P -->
                 <?php for($i = 0; $i < sizeOf($joinexpimages); $i++): ?>
-                <?php if($joinexpimages[$i]->image_id != $id): ?>
+                <?php if($joinexpimages[$i]->image_id != $id AND $joinexpimages[$i]->delete != 1): ?><!--  && $images[$joinexpimages[$i]->image_id]->delete != 1 -->
                 <label class="btn btn-primary col-md-3">
                   <input type="radio" name="image_link" value=<?php echo e($joinexpimages[$i]->image_id); ?> autocomplete="off">
                   <div>
                     <input type="radio" name="imageArrive" id=<?php echo e($joinexpimages[$i]->image_id); ?> value=<?php echo e($joinexpimages[$i]->image_id); ?>><br>
                     <a href="#" class="pop miniature">
-                      <?php echo e($joinexpimages[$i]->image_id); ?>
-
+<!--                       <?php echo e($joinexpimages[$i]->image_id); ?> -->
                       <img class="toto" id="link_id" value=<?php echo e($joinexpimages[$i]->image_id); ?>
 
-                      src="<?php echo e(URL::asset('/img/'.$exp->id.'/'.$joinexpimages[$i]->image_id.'.JPG')); ?>"
-                      width="100%">
+                      src="<?php echo e(URL::asset('/img/'.$exp->id.'/'.$joinexpimages[$i]->image_id.'.PNG')); ?>" style=" width:100%">
                     </a>
                   </div>
                 </label>
@@ -64,7 +115,7 @@
 
             <div class="panel-body hotspotSave">
 
-              <select id="single">
+              <select name="position_z" id="single">
                 <option>petit</option>
                 <option>moyen</option>
                 <option>grand</option>
@@ -76,7 +127,7 @@
               <input id="shift_z" type="text" name="shift_z" value="" hidden>
               <input id="position_x" type="text" name="position_x" value="" hidden>
               <input id="position_y" type="text" name="position_y" value="" hidden>
-              <input id="position_z" type="text" name="position_z" value="" hidden>
+              <input id="position_z" type="text" name="position_z" value="" hidden>          
               <input id="depth" type="text" name="depth" value="" hidden>
               <input id="latitude" type="text" name="latitude" value="" hidden>
               <input id="longitude" type="text" name="longitude" value="" hidden>
@@ -93,47 +144,12 @@
 
             </form>
           </div>
-
-        <!--================= boutons generaux ================-->
-          <div class="col-md-8"><div></div></div>
-          <div class="col-md-4">
-          <table>
-
-  <!--           <th>
-              <?php echo Form::open(array('route'=>['exp.photo.show', $exp->id, $image->id], 'method'=>'POST')); ?>
-
-              <input type="text" name="image" value="<?php echo e($image->id); ?>" hidden>
-              <?php echo Form::button('ajouter hotspot', ['class'=>'btn btn-primary', 'type'=>'submit']); ?>
-
-            </th> -->
-            <?php echo Form::close(); ?>
-
-            <th>
-              <?php echo Form::open(array('route'=>['exp.photo.show', $exp->id, $image->id], 'method'=>'POST')); ?>
-
-              <input type="text" name="image" value="<?php echo e($image->id); ?>" hidden>
-              <?php echo Form::button('supprimer les hotspots', ['class'=>'btn btn-danger', 'type'=>'submit']); ?>
-
-              <?php echo Form::close(); ?>
-
-            </th>
-            <th>
-              <?php echo Form::open(array('route'=>['exp.photo.show', $exp->id, $image->id], 'method'=>'POST')); ?>
-
-              <input type="text" name="image" value="<?php echo e($image->id); ?>" hidden>
-              <?php echo Form::button('Retour gallerie', ['class'=>'btn btn-secondary', 'type'=>'submit']); ?>
-
-              <?php echo Form::close(); ?>
-
-            </th>
-          </table>
-          </div>
         </div>
       </div>
     </div>
 
   </div>
-  
+
 
   <!-- script -->
 

@@ -38,7 +38,7 @@
 
                             </div>
 
-                            <select name="dep"  onChange="affiche_ville(this.value)"><option value=""> </option>
+                            <select name="ville"  onChange="affiche_ville(this.value)"><option value="" label="ville"> </option>
                                 <option value='01'>01 - Ain</option>
                                 <option value='02'>02 - Aisne</option>
                                 <option value='03'>03 - Allier</option>
@@ -142,6 +142,7 @@
                             </select>
                             Ville
 
+
                             <div class="form-group">
                                 <?php echo Form::label('name_owner', 'propriétaire'); ?>
 
@@ -153,36 +154,35 @@
                             <div class="form-group">
                                 Surface(m²) <?php echo Form::selectRange('surface', 1, 9999); ?>
 
-                                | Pièce  <?php echo Form::selectRange('room', 1, 20); ?>
+                                | Pièce  <?php echo Form::selectRange('rooms', 1, 20); ?>
 
                                 | Etage  <?php echo Form::selectRange('level', 1, 20); ?>
 
-                                | Parking  <?php echo e(Form::checkbox('parking', '1')); ?>
+                                | Parking  <?php echo e(Form::select('parking', array('1' => 'oui', '0' => 'non'), '0')); ?>
 
-                                | Ascensseur  <?php echo e(Form::checkbox('lift', '1')); ?>
+                                | Ascensseur  <?php echo e(Form::select('lift', array('1' => 'oui', '0' => 'non'), '0')); ?>
 
-                                | Chauf Electrique <?php echo e(Form::checkbox('electricity', '1')); ?>
+                                | Chauf Electrique <?php echo e(Form::select('electricity', array('1' => 'oui', '0' => 'non'), '1')); ?>
 
                                 | Classe energie <?php echo Form::select('class_nrj', array('A' => 'A', 'B' => 'B','C' => 'C','D' => 'D','E' => 'E',), 'E'); ?>
 
                                 | Classe gaz <?php echo Form::select('class_gaz', array('A' => 'A', 'B' => 'B','C' => 'C','D' => 'D','E' => 'E',), 'E'); ?>
 
-                                | Dispo  <?php echo e(Form::checkbox('availability', '1')); ?>
+                                | Dispo  <?php echo e(Form::select('availability', array('1' => 'oui', '0' => 'non'), '1')); ?>
 
                             </div>
                         </div>
                         <div class="col-sm-9">
-                            <div class="form-group">
+<!--                             <div class="form-group">
                                 <label for="photo">PHOTO</label> (obligatoire)<?php echo Form::file('photo'); ?>
 
-                            </div>
-
+                            </div> -->
                         </div>
                         <div class="col-sm-3">
                             <button class="btn btn-success">Envoyer</button>
                             <?php echo Form::close(); ?>
 
-                            <?php echo e(link_to_route('exp.index', 'Retour', ['class' => 'btn btn-danger'])); ?>
+                            <?php echo e(link_to_route('exp.index', 'Retour', ['class' => 'btn btn-primary'])); ?>
 
                         </div>
 

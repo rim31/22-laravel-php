@@ -9,7 +9,7 @@
 
                 <h1>{{$exp->id}}</h1>
 
-                    <div class="panel-body">
+<!--                     <div class="panel-body">
                         <form action="{{ route('exp.photo.store', $exp->id)}}" method="post" enctype="multipart/form-data">
                             <label>PHOTO</label>
                             <input type="file" name="file" id="file">
@@ -18,7 +18,14 @@
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         </form>
                     </div>
-
+ -->
+                <form action="{{ route('exp.photo.store', $exp->id)}}" method="post" 
+                enctype="multipart/form-data">
+                <input type="file" name="file" id="file">
+                <input type="text" name="id" value="{{$exp->id}}" hidden>
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                <input type="submit" value="envoyer" class="btn btn-success">
+                </form>
 
             </div>
              @if($errors->has())

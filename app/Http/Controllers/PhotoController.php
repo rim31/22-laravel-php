@@ -35,7 +35,7 @@ class PhotoController extends Controller
         // $users = JoinUserExp::all();
         $users = JoinUserExp::where('id_user', $exp->id)->get();
         //je selectionne seulement les Id des images correspondant a l'exp
-        $joins = JoinExpImage::where('exp_id', $exp->id)->get();
+        $joins = JoinExpImage::where('exp_id', $exp->id)->Where('delete', '!=', '1')->get();
         // $joins = JoinExpImage::all();
 
         //on recupere seulement les images de l'exp
@@ -82,53 +82,127 @@ class PhotoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Exp $exp, Request $request)
+        public function store(Exp $exp, Request $request)
     {
         var_dump($exp->id);
-        //on créé le dossier image s'il n'existe pas
-        if (!file_exists(public_path('img/'))) {
-        File::makeDirectory(public_path('img/'));
-        echo "Creation ";
+        //on verifie qu'il s'agit bien d'une image envoyée
+        if(isset($_FILES['file']))
+        {
+            $file = $_FILES['file'];
+            //vérification qu'il s'agit d'une image
+            if (getimagesize($file['tmp_name']))
+            {
+                echo "c'est bien une image";
+                //on créé le dossier image s'il n'existe pas
+                if (!file_exists(public_path('img/'))) {
+                File::makeDirectory(public_path('img/'));
+                echo "Creation ";
+                }
+                echo "dossier img | ";
+                //on créé le dossier de l'exp s'il n'existe pas
+                if (!file_exists(public_path('img/'.$exp->id))) {
+                File::makeDirectory(public_path('img/'.$exp->id));
+                echo "Creation ";
+                }
+                echo "sous dossier img " . $exp->id;
+                //on injecte l'image dans ce dossier
+                if (Input::hasFile('file')) {
+                    $file = Input::file('file');
+                    //clone de la photo
+                    $copie_file = clone $file;
+                   // imagepng(imagecreatefromstring(file_get_contents($copie_file)), "output.PNG");
+
+                    //insérer le nom de la photo dans la table image
+                    // $name = $file->getClientOriginalName();
+                    // var_dump($name);
+
+                    // die;
+                    //il faut insérer le nom de la photo dans la table Photo,
+                    //Aussi, il faut transformer les images en $id.JPG
+                    $nouvel = Image::create([
+                        'description' => $file->getClientOriginalName(),
+                        ]);
+                    // il faut aussi associer la jointure avec l'id, OK !!
+                    $join = JoinExpImage::create([
+                        'exp_id' => $exp->id,
+                        'image_id' => $nouvel->id
+                    ]);
+
+                    // $nouvel->update(['name' => $nouvel->id.'.'.$file->getClientOriginalExtension()]);
+                    $nouvel->update(['name' => $nouvel->id.'.PNG',
+                        'option_1' => $nouvel->id.'_mini.PNG'
+                        ]);
+
+                    //$file->move('img/'.$exp->id, $nouvel->id.'.'.$file->getClientOriginalExtension());//prend le dernier l'extension du fichier image
+                    // echo '<img src="img/'.$exp->id.'/'. $nouvel->id.'.'.$file->getClientOriginalExtension().'"/>';
+
+                    $file->move('img/'.$exp->id, $nouvel->name);//prend le dernier l'extension du fichier image
+                    // $png->move('img/'.$exp->id, $nouvel->option_1);//prend le dernier l'extension du fichier image
+
+                    echo '<img src="/img/'.$exp->id.'/'. $nouvel->name.'"/>';
+                    // die();
+                    echo "<BRr>il y a un fichier";
+                }
+            }
+            else
+            {
+               return redirect()->route('exp.photo.index', [$exp])->with('message', 'erreur de photo !');
+            }
         }
-        echo "dossier img | ";
-        //on créé le dossier de l'exp s'il n'existe pas
-        if (!file_exists(public_path('img/'.$exp->id))) {
-        File::makeDirectory(public_path('img/'.$exp->id));
-        echo "Creation ";
-        }
-        echo "sous dossier img " . $exp->id;
-        //on injecte l'image dans ce dossier
-        if (Input::hasFile('file')) {
-            $file = Input::file('file');
-            //insérer le nom de la photo dans la table image
-            $name = $file->getClientOriginalName();
-            //il faut insérer le nom de la photo dans la table Photo,
-            //Aussi, il faut transformer les images en $id.JPG
-            $nouvel = Image::create([
-                'description' => $file->getClientOriginalName(),
-                'option_1' => '1',
-                ]);
-            // il faut aussi associer la jointure avec l'id, OK !!
-            $join = JoinExpImage::create([
-                'exp_id' => $exp->id,
-                'image_id' => $nouvel->id
-            ]);
-
-            $nouvel->update(['name' => $nouvel->id.'.'.$file->getClientOriginalExtension()]);
-            var_dump(" | ". $nouvel->name . " | ");
-
-            //$file->move('img/'.$exp->id, $nouvel->id.'.'.$file->getClientOriginalExtension());//prend le dernier l'extension du fichier image
-            // echo '<img src="img/'.$exp->id.'/'. $nouvel->id.'.'.$file->getClientOriginalExtension().'"/>';
-            $file->move('img/'.$exp->id, $nouvel->name);//prend le dernier l'extension du fichier image
-
-            echo '<img src="/img/'.$exp->id.'/'. $nouvel->name.'"/>';
-
-            echo "<BRr>il y a un fichier";
-
-        }
-        return redirect()->route('exp.photo.index', [$exp])->with('message', 'new experience added !');
-
+        else
+               return redirect()->route('exp.photo.index', [$exp])->with('message', 'erreur de photo !');
+        return redirect()->route('exp.photo.index', [$exp])->with('message', 'nouvelle photo ajoutée !');
     }
+
+
+    // public function store(Exp $exp, Request $request)
+    // {
+    //     var_dump($exp->id);
+    //     //on créé le dossier image s'il n'existe pas
+    //     if (!file_exists(public_path('img/'))) {
+    //     File::makeDirectory(public_path('img/'));
+    //     echo "Creation ";
+    //     }
+    //     echo "dossier img | ";
+    //     //on créé le dossier de l'exp s'il n'existe pas
+    //     if (!file_exists(public_path('img/'.$exp->id))) {
+    //     File::makeDirectory(public_path('img/'.$exp->id));
+    //     echo "Creation ";
+    //     }
+    //     echo "sous dossier img " . $exp->id;
+    //     //on injecte l'image dans ce dossier
+    //     if (Input::hasFile('file')) {
+    //         $file = Input::file('file');
+    //         //insérer le nom de la photo dans la table image
+    //         $name = $file->getClientOriginalName();
+    //         //il faut insérer le nom de la photo dans la table Photo,
+    //         //Aussi, il faut transformer les images en $id.JPG
+    //         $nouvel = Image::create([
+    //             'description' => $file->getClientOriginalName(),
+    //             'option_1' => '1',
+    //             ]);
+    //         // il faut aussi associer la jointure avec l'id, OK !!
+    //         $join = JoinExpImage::create([
+    //             'exp_id' => $exp->id,
+    //             'image_id' => $nouvel->id
+    //         ]);
+
+    //         $nouvel->update(['name' => $nouvel->id.'.'.$file->getClientOriginalExtension()]);
+    //         var_dump(" | ". $nouvel->name . " | ");
+
+    //         //$file->move('img/'.$exp->id, $nouvel->id.'.'.$file->getClientOriginalExtension());//prend le dernier l'extension du fichier image
+    //         // echo '<img src="img/'.$exp->id.'/'. $nouvel->id.'.'.$file->getClientOriginalExtension().'"/>';
+    //         $file->move('img/'.$exp->id, $nouvel->name);//prend le dernier l'extension du fichier image
+
+    //         echo '<img src="/img/'.$exp->id.'/'. $nouvel->name.'"/>';
+    //         echo "<BRr>il y a un fichier";
+
+    //     }
+    //     return redirect()->route('exp.photo.index', [$exp])->with('message', 'nouvelle photo ajoutée !');
+
+    // }
+
+
 
     /**
      * Display the specified resource.
@@ -172,14 +246,15 @@ class PhotoController extends Controller
      */
     public function destroy(Request $request, Exp $exp)
     {
+        //on vérifie que l'image supprimer est phpq l"image de couverture
+        $cover = Exp::where('photo', $request->image)->get();
+        var_dump($cover);
+        DB::table('exps')
+                  ->where('id', $exp->id)
+                  ->where(['photo' => $request->image])
+                  ->update(['photo' => '0']);
 
-        // var_dump($image->id);
-        // $image = Image::findOrFail($request->id);
-        // $exp = Image::findOrFail($request->exp);
-
-/*        var_dump($request->exp);//id de  l'experience
-        var_dump($request->image);//id de la photo dans l'experience*/
-
+//on met un indicateur avec la date de suppression pour plus tard
         $joins = JoinExpImage::find($request->image);
         $joins->update([
             'delete' => 1,
@@ -190,15 +265,8 @@ class PhotoController extends Controller
             'delete' => 1,
             'time_del' => Carbon::now()
         ]);
-        // var_dump($joins->time_del);die();//id de la photo dans l'experience*/
 
-
-        // $image = Image::find($request->image);--
-        // $image = Image::findOrFail($request->id);
-        // $exp = Exp::findOrFail($request->exp);
-/*        var_dump($image);
-*/
-// $image->delete();-- File::delete('/path/to/image/file');
+// $image->delete();--
         return redirect()->route('exp.photo.index', [$exp])->with('message', 'Image deleted !');
     }
 

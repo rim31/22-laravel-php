@@ -5,71 +5,110 @@
 <div class="container">
     <div class="col-md-10 col-md-offset-1">
         <div class="panel panel-default">
-            <div class="panel-heading"><h5><?php echo e($exp->name); ?></h5></div>
-            <div class="panel-body">
-                <div>
-                    <h4>vos hotspots</h4>
-                </div>
-                <!-- ======================== afficher l'image ================================ -->
-                <button id="displayHotspot" type="button" class="btn btn-success">Afficher les hotspots</button>
-                <DIV  id="Hospot" class="photo hotspotArea">
-                    <div class="hotspotTarget"></div>
-                    <img src="<?php echo e(URL::asset('/img/'.$exp->id.'/'.$id.'.JPG')); ?>" alt="immovr" class="photo">
-                </DIV>
-                <DIV class="col-sm-10">
-                </DIV>
-                <DIV class="col-sm-2">
-                    <?php echo e(link_to_route('exp.photo.index', 'Retour', [$exp->id], ['class' => 'btn btn-info'])); ?>
+           <div class="panel-heading">
+             <h5><?php echo e($exp->name); ?></h5>
+           </div>
+           <div class="panel-body">
+            <h4>vos hotspots</h4>
+           <!-- ======================== afficher l'image ================================ -->
+           <div  id="Hospot" class="hotspotArea col-md-12">
+            <div class="hotspotTarget">
+             <img src="<?php echo e(URL::asset('/img/'.$exp->id.'/'.$id.'.PNG')); ?>" alt="immovr" class="photo">
+            </div>
+           </div>
+            <div class="col-sm-3">
+              <?php echo Form::open(array('route'=>['exp.photo.hotspot.destroy', $exp->id, $id, 0], 'method'=>'DELETE')); ?>
 
-                </DIV>
-                <?php echo Form::close(); ?>
+              <input type="text" name="image" value="<?php echo e($id); ?>" hidden>
+              <input type="text" name="combien" value="tous" hidden>
+              <?php echo Form::button('supprimer les hotspots', ['class'=>'btn btn-danger', 'type'=>'submit']); ?>
 
-            </DIV>
+              <?php echo Form::close(); ?>
 
-            <!-- JavaScripts -->
+          </div>
+          <div class="col-sm-2">
+              <?php echo e(link_to_route('exp.photo.index', 'Retour', [$exp->id], ['class' => 'btn btn-info'])); ?>
 
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-            <!-- <script language="JavaScript" type="text/javascript" src="<?php echo e(URL::asset('js/carousel.js')); ?>"></script> -->
-            <script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
+              <?php echo Form::close(); ?>
 
-            <script>
-                $('#displayHotspot').click(function(e) {
-                var H = $('.hotspotArea').height();
-                var W = $('.hotspotArea').width();
-                var spotX = 0;
-                var spotY = 0;
-                // récupération des positions
-                <?php for($spot = 0; $spot < sizeOf($hotspots); $spot++): ?>
-                    spotX = W * (('<?php echo e($hotspots[$spot]->longitude); ?>' + 180) / 360);
-                    spotY = H * (('<?php echo e($hotspots[$spot]->latitude); ?>' - 90 ) / (-180));
-                    console.log('<?php echo e($hotspots[$spot]->longitude); ?>' ,' => ', spotY, '<?php echo e($hotspots[$spot]->latitude); ?>' ,' => ', spotX);//'<?php echo e($hotspots[$spot]); ?>'
-                $('.hotspotTarget').addClass('circleLarge').offset({ top: spotY, left:spotX});
-                <?php endfor; ?>
-             });
+          </div>
+          </div>
+        </div>
 
-            // // ajax
-            // $("button").click(function(){
-            //     $.ajax({url: "http://localhost/ivr/resources/exps/photos/hotspots/show.blade.php", success: function(result){
-            //         console.log(result);
-            //         var test = JSON.parse(result);
-            //         for (var i = 0; i < test.length; i++) {
-            //             console.log(test[i]);
-            //         };
-            //     }});
-            // });
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">Pièce suivante</h4>
+      </div>
+      <div class="modal-body">
+        <img id="image_link" src="<?php echo e(URL::asset('/img/'.$exp->id.'/'.$exp->photo.'.PNG')); ?>" alt="immovr" class="photo" href="">
+      </div>
+      <div class="modal-footer">
+        <div id="bouttonLink"></div>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <?php echo Form::open(array('route'=>['exp.photo.hotspot.destroy', $exp->id, $id, $id], 'method'=>'DELETE')); ?>
 
-            </script>
-    </DIV>
-</DIV>
-</DIV>
-</nav>
+        <input id="idLink" type="text" name="image" value="" hidden>
+        <input type="text" name="combien" value="unique" hidden>
+        <?php echo Form::button('supprimer les hotspots', ['class'=>'btn btn-danger', 'type'=>'submit']); ?>
 
-<?php echo $__env->yieldContent('content'); ?>
+        <?php echo Form::close(); ?>
 
-</main>
 
-</body>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- JavaScripts -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!-- <script language="JavaScript" type="text/javascript" src="<?php echo e(URL::asset('js/carousel.js')); ?>"></script> -->
+  <script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
+
+  <script>
+  $(document).ready(function(e) {
+    // $('#displayHotspot').click(function(e) {
+    var H = $('.hotspotArea').height();
+    var W = $('.hotspotArea').width();
+    // récupération des positions
+    <?php for($spot = 0; $spot < sizeOf($hotspots); $spot++): ?>
+    var x = '<?php echo e($hotspots[$spot]->position_x); ?>';
+    var y = '<?php echo e($hotspots[$spot]->position_y); ?>';
+    //CALCUL CONVERSION longitude lattitude POUR OLIVIA
+    //=================================================
+    var posx = Number(W) * Number(x);
+    var posy = Number(H) * Number(y);
+   $('.hotspotTarget').append('<div id="'+'<?php echo e($hotspots[$spot]->id); ?>'+'" data-id="'+<?php echo e($hotspots[$spot]->id); ?>+'" data-link="'+<?php echo e($hotspots[$spot]->image_link); ?>+'" class="circleSmall" style="background-color:red;position:absolute;width:20px;top:'+posy+';left:'+posx+';" onclick="myFunction(this.id)" data-toggle="modal" data-target="#myModal"></div>');
+    console.log(posx, posy, x, y);
+
+    <?php endfor; ?>
+  });
+
+
+  function myFunction(id) {
+      // alert("I am an alert box! =>"+id);
+      // console.log($('#'+id).data("link"), id);
+          // <?php echo e($id); ?> = $('#'+id).data("link");
+  document.getElementById("image_link").setAttribute("src",'/img/'+<?php echo e($exp->id); ?>+'/'+$('#'+id).data("link")+'.PNG');
+      // console.log($(e).data("link"));
+  document.getElementById("idLink").setAttribute("value", $('#'+id).data("id"));
+
+   // $('#bouttonLink').html('<?php echo e(link_to_route('exp.photo.hotspot.index', 'Go !', [$exp->id, 15], ['class' => 'btn btn-success'])); ?>');
+  $('#bouttonLink').html('<a href="/exp/'+<?php echo e($exp->id); ?>+'/photo/'+$('#'+id).data("link")+'/hotspot" class="btn btn-success">Go !</a>');
+
+  }
+  </script>
+    </div>
+    <?php echo $__env->yieldContent('content'); ?>
+</div>
+
+
 
 <?php $__env->stopSection(); ?>
 

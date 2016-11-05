@@ -21,36 +21,18 @@ use DB;
 class ExtraController extends Controller
 {
 
-    
-  public function cover(Request $request, Exp $exp)
-{
-  echo "Coucou : controller Cover dans PhototController";
-  var_dump($request->photo);
-  die();
-  var_dump($exp->id);
-  $exps = Exp::all();
-  $users = JoinUserExp::all();
-  $images = Image::all();
-  $joins = JoinExpImage::all();
-  // $up = Exp::where('id', $exp->id)->get();
 
-  //remise a zero du la photo de couverture
-  DB::table('users')
-            ->where('id', $exp->id)
-            ->update(['photo' => $request->photo]);
-
-  // $joins = JoinExpImage::where('exp_id', $exp->id)->get();
-
-   return view('/', compact('exps', 'users', 'images', 'joins', 'exp'));
-}
+      public function cover(Request $request, Exp $exp)
+    {
+      $exps = Exp::all();
+      //remise a zero du la photo de couverture et on injecte le numero de l'id phot dans l'exp->photo
+      DB::table('exps')
+                ->where('id', $request->exp)
+                ->update(['photo' => $request->id]);
+      $exp->id = $request->exp;
+      return redirect()->route('exp.photo.index', [$exp])->with('message', 'Image favorite ajoutée !');
+    //   return view('exps.photos.index', compact('exps', 'users', 'joins', 'exp'));
+    }
 
 
-
-
-  public function demo2(Request $request, Exp $exp, Image $image)
-{
-  echo "Coucou : controller Cover dans PhototController";
-  var_dump($request->name);die();
-  return view('demo.demo');
-}
 }

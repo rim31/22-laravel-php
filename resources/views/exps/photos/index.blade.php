@@ -12,8 +12,15 @@
 				<div class="panel-body">
 					<h2>{{ link_to_route('exp.photo.hotspot.index', $exp->name, [$exp->id, 0]) }}</h2>{{$exp->adress}}<BR>
 						<BR>
-							<div class="col-sm-10">
+							<div class="col-sm-8">
 								{{ link_to_route('exp.photo.create', 'Ajouter photo', [$exp->id], ['class' => 'btn btn-success']) }}
+							</div>
+							<div class="col-sm-2">
+								@if ($exp->photo)
+								{{ link_to_route('exp.photo.hotspot.show', 'Visite Virtuelle', [$exp->id, $exp->photo, $exp->photo], ['class' => 'btn btn-success']) }}
+								@else
+									favoris d'abord
+								@endif
 							</div>
 							<div class="col-sm-2">
 								{{ link_to_route('exp.index', 'Retour', [$exp->id], ['class' => 'btn btn-default']) }}
@@ -22,31 +29,68 @@
 							<table class="table">
 								<tr>
 									<th>Photo</th>
-									<th>Action</th>
 									<th>Editer</th>
-									<th>Photo de couverture</th>
-								</tr>
+									<th>Action</th>
+									<th>Favoris</th>
+									<th>Gallerie</th>
 								<tr>
 									@for ($i = 0; $i < sizeOf($joins); $i++)
 									@if($joins[$i]->delete != 1)
-									<td>
-										/img/{{$exp->id}}/{{$joins[$i]->id}}.JPG
-										<img src="{{ URL::asset('/img/'.$exp->id.'/'.$joins[$i]->id.'.JPG') }}"
-										alt="immovr" class="photo" style="width:200px;height:100px;">
+									<td>	<!-- /img/{{$exp->id}}/{{$joins[$i]->id}}.PNG -->
+										<img src="{{ URL::asset('/img/'.$exp->id.'/'.$joins[$i]->id.'.PNG') }}"
+										alt="immovr" class="photo" style="width:100px;height:50px;">
+										<!-- 	<img src="{{ URL::asset('/img/'.$exp->id.'/'.$joins[$i]->id.'.JPG') }}"
+										alt="immovr" class="photo" style="width:100px;height:50px;"> -->
 									</td>
 									<td>
-										{{ link_to_route('exp.photo.hotspot.create', 'Editer spot', [$exp->id, $joins[$i]->id], ['class' => 'btn btn-info']) }}
+										{{ link_to_route('exp.photo.hotspot.create', 'Editer spot', [$exp->id, $joins[$i]->id], ['class' => 'btn btn-primary']) }}
 									</td>
-									<td>{!! Form::open(array('route'=>['exp.photo.destroy', $exp->id, $joins[$i]->id], 'method'=>'DELETE')) !!}
-										<input type="text" name="image" value="{{$joins[$i]->id}}" hidden>
-										{!! Form::button('Effacer la photo', ['class'=>'btn btn-danger', 'type'=>'submit']) !!}
+									<td>
+                                        <!-- Button trigger modal -->
+                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">
+                                          Supprimer
+                                        </button>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                          <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                              <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                  <span aria-hidden="true">&times;</span>
+                                                </button>
+                                                <h4 class="modal-title" id="myModalLabel">Suppression de l'image</h4>
+                                              </div>
+                                              <div class="modal-body">
+                                                Voulez-vous vraiment supprimer ?
+												<img src="{{ URL::asset('/img/'.$exp->id.'/'.$joins[$i]->id.'.PNG') }}"
+												alt="immovr" class="photo">
+                                              </div>
+                  								<div class="modal-footer" style="display: flex; flex-direction: row;" >
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		       									{!! Form::open(array('route'=>['exp.photo.destroy', $exp->id, $joins[$i]->id], 'method'=>'DELETE')) !!}
+												<input type="text" name="image" value="{{$joins[$i]->id}}" hidden>
+												{!! Form::button('Effacer la photo', ['class'=>'btn btn-danger', 'type'=>'submit']) !!}
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+
 									</td>
 									{!! Form::close() !!}
 									<td>
-										{!! Form::open(array('route'=>['cover', $exp->id, $joins[$i]->id])) !!}
-										{!! Form::button('Choix', ['class'=>'btn btn-default', 'type'=>'submit']) !!}
-										{!! Form::close() !!}
-										{{ link_to_route('exp.photo.hotspot.index', 'gallerie', [$exp->id, $joins[$i]->id], ['class' => 'btn btn-info']) }}
+										@if ($joins[$i]->id == $exp->photo)
+											favoris
+										@else
+											{!! Form::open(array('route'=>['cover'])) !!}
+											<input type="text" name="exp" value="{{$exp->id}}" hidden>
+											<input type="text" name="name" value="{{$exp->name}}" hidden>
+											<input type="text" name="id" value="{{$joins[$i]->id}}" hidden>
+											{!! Form::button('Choix', ['class'=>'btn btn-default', 'type'=>'submit']) !!}
+											{!! Form::close() !!}
+										@endif
+									</td>
+									<td>
+										{{ link_to_route('exp.photo.hotspot.show', 'SHOW test', [$exp->id, $joins[$i]->id, $exp->photo], ['class' => 'btn btn-info']) }}
 									</td>
 									@endif
 								</tr>

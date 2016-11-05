@@ -12,7 +12,7 @@ class CreateJoinImageHotspotsTable extends Migration
      */
     public function up()
     {
-        Schema::create('join_image_spots', function (Blueprint $table) {
+        Schema::create('join_image_hotspots', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('image_id');
             $table->integer('spot_id');

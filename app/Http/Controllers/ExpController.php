@@ -32,8 +32,7 @@ class ExpController extends Controller
     {
         $exps = DB::table('exps')->where('delete', '!=', '1')->paginate(5);//pagination des experiences
         $images = Image::find(Auth::user()->id);//pour la cover
-        $users = JoinUserExp::all();
-        // var_dump($users);
+        $users = JoinUserExp::all();// var_dump($users);
         return view('exps.index', compact('exps', 'users', 'images'));
 
         // $exps = DB::table('exps')->paginate(5);//pagination des experiences
@@ -69,6 +68,19 @@ class ExpController extends Controller
             'name' => $request->name,
             'about' =>$request->about,
             'adress' => $request->adress,
+            'ville' => $request->ville,
+            'name_owner' => $request->name_owner,
+            'surface' => $request->surface,
+            'price' => $request->price,
+            'rooms' => $request->rooms,
+            'parking' => $request->parking,
+            'lift' => $request->lift,
+            'level' => $request->level,
+            'availability' => $request->availability,
+            'electricity' => $request->electricity,
+            'class_nrj' => $request->class_nrj,
+            'class_gaz' => $request->class_gaz,
+
             ]);
 
         //jointure de entre la table user et exp
@@ -163,7 +175,7 @@ class ExpController extends Controller
             'delete' => 1,
             'time_del' => Carbon::now()
         ]);
-        // $exp->delete();
+        // $exp->delete();//on ne supprime pas mais on met juste un indicateur supprimer
         return redirect()->route('exp.index')->with('message', 'Experience deleted !');
     }
 }

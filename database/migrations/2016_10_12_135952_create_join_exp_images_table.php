@@ -19,7 +19,7 @@ class CreateJoinExpImagesTable extends Migration
             $table->integer('cover');
             $table->string('delete');
             $table->dateTime('time_del');
-            $table->string('actif')->default(1);
+            $table->string('actif');
             $table->timestamps();
         });
     }

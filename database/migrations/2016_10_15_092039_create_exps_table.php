@@ -16,6 +16,7 @@ class CreateExpsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('about');
+            $table->string('ville');
             $table->string('id_exp');
             $table->string('name_owner');
             $table->string('adress');

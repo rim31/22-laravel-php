@@ -29,7 +29,7 @@
                                 {!! Form::textarea('adress', null, ['class' =>'form-control','maxlength' => '250', 'rows'=> '3' ]) !!}
                             </div>
 
-                            <select name="dep"  onChange="affiche_ville(this.value)"><option value=""> </option>
+                            <select name="ville"  onChange="affiche_ville(this.value)"><option value="" label="ville"> </option>
                                 <option value='01'>01 - Ain</option>
                                 <option value='02'>02 - Aisne</option>
                                 <option value='03'>03 - Allier</option>
@@ -133,6 +133,7 @@
                             </select>
                             Ville
 
+
                             <div class="form-group">
                                 {!! Form::label('name_owner', 'propriétaire') !!}
                                 {!! Form::text('name_owner', null, ['class' =>'form-control']) !!}
@@ -141,26 +142,25 @@
                         <div class="col-sm-12">
                             <div class="form-group">
                                 Surface(m²) {!! Form::selectRange('surface', 1, 9999)!!}
-                                | Pièce  {!! Form::selectRange('room', 1, 20)!!}
+                                | Pièce  {!! Form::selectRange('rooms', 1, 20)!!}
                                 | Etage  {!! Form::selectRange('level', 1, 20)!!}
-                                | Parking  {{ Form::checkbox('parking', '1') }}
-                                | Ascensseur  {{ Form::checkbox('lift', '1') }}
-                                | Chauf Electrique {{ Form::checkbox('electricity', '1') }}
+                                | Parking  {{ Form::select('parking', array('1' => 'oui', '0' => 'non'), '0') }}
+                                | Ascensseur  {{ Form::select('lift', array('1' => 'oui', '0' => 'non'), '0') }}
+                                | Chauf Electrique {{ Form::select('electricity', array('1' => 'oui', '0' => 'non'), '1') }}
                                 | Classe energie {!! Form::select('class_nrj', array('A' => 'A', 'B' => 'B','C' => 'C','D' => 'D','E' => 'E',), 'E')!!}
                                 | Classe gaz {!! Form::select('class_gaz', array('A' => 'A', 'B' => 'B','C' => 'C','D' => 'D','E' => 'E',), 'E')!!}
-                                | Dispo  {{ Form::checkbox('availability', '1') }}
+                                | Dispo  {{ Form::select('availability', array('1' => 'oui', '0' => 'non'), '1')  }}
                             </div>
                         </div>
                         <div class="col-sm-9">
-                            <div class="form-group">
+<!--                             <div class="form-group">
                                 <label for="photo">PHOTO</label> (obligatoire){!! Form::file('photo') !!}
-                            </div>
-
+                            </div> -->
                         </div>
                         <div class="col-sm-3">
                             <button class="btn btn-success">Envoyer</button>
                             {!! Form::close() !!}
-                            {{ link_to_route('exp.index', 'Retour', ['class' => 'btn btn-danger']) }}
+                            {{ link_to_route('exp.index', 'Retour', ['class' => 'btn btn-primary']) }}
                         </div>
 
                     </div>
