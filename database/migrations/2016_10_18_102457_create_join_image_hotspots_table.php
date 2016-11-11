@@ -31,6 +31,6 @@ class CreateJoinImageHotspotsTable extends Migration
      */
     public function down()
     {
-                Schema::drop('join_image_spots');
+                Schema::drop('join_image_hotspots');
     }
 }

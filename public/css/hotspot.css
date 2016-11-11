@@ -119,3 +119,65 @@ h1{
   background-color: red;
 }
 
+/*------------------------------------------------*\
+  Slack hotspot 2
+\*------------------------------------------------*/
+@-webkit-keyframes slack {
+  from {
+    -webkit-transform: translate(-50%, -50%) scale(1);
+            transform: translate(-50%, -50%) scale(1);
+  }
+  to {
+    -webkit-transform: translate(-50%, -50%) scale(1.5);
+            transform: translate(-50%, -50%) scale(1.5);
+  }
+}
+@keyframes slack {
+  from {
+    -webkit-transform: translate(-50%, -50%) scale(1);
+            transform: translate(-50%, -50%) scale(1);
+  }
+  to {
+    -webkit-transform: translate(-50%, -50%) scale(1.5);
+            transform: translate(-50%, -50%) scale(1.5);
+  }
+}
+.slack {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  position: relative;
+  background-color: #fff;
+  box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.2);
+}
+.slack:before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  content: "";
+  display: block;
+  border: 4px solid #fff;
+  box-shadow: inset 0 0 4px 2px rgba(0, 0, 0, 0.2), 0 0 4px 2px rgba(0, 0, 0, 0.2);
+  -webkit-animation: slack 400ms linear infinite;
+          animation: slack 400ms linear infinite;
+  -webkit-animation-direction: alternate;
+          animation-direction: alternate;
+}
+
+.flexModalHotspotContainer
+{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-content: center;
+}
+
+
+
+
+

@@ -62,8 +62,13 @@ class HotspotController extends Controller
         $joinexpimages = JoinExpImage::
             where('exp_id', $exp->id)
             ->Where('delete', '!=', '1')
+            ->Where('image_id', '!=', 'image->id')
             ->simplePaginate(4);
-        $images = Image::all();
+        // $images = Image::all();
+        $images = DB::table('images')
+                    ->join('join_exp_images', 'images.id', '=', 'join_exp_images.image_id')
+                    ->get();
+                    // ->simplePaginate(4);
         $hotspots = Hotspot::where('image_id', $id)->get();
         return view('exps.photos.hotspots.create', compact('exps', 'users',
             'images', 'joinexpimages', 'exp', 'image', 'photo', 'id', 'hotspots'));
@@ -98,10 +103,6 @@ class HotspotController extends Controller
         'image_linkY' => $request->image_linkY,
         ]);
     // il faut aussi associer la jointure avec l'id, OK !!
-    /*        $joins = JoinImageHotspot::create([
-        'image_id' => $id,
-        'spot_id' => $hosptots->id
-        ]);*/
     $joins = DB::table('join_image_hotspots')->insert([
         'image_id' => $id,
         'spot_id' => $hotspot->id
@@ -115,17 +116,7 @@ class HotspotController extends Controller
         $images = DB::table('images')
             ->join('join_exp_images', 'images.id', '=', 'join_exp_images.image_id')
             ->get();
-        // $hotspots = DB::table('hotspots')
-        //     ->join('join_image_hotspots', 'hotspots.id', '=', 'join_image_hotspots.image_id')
-        //     ->get();
-        //pour envoyer l'id de l'image
-        // $exps = Exp::all();
-        // $users = JoinUserExp::all();
-        // //je selectionne seulement les Id des images correspondant a l'exp
-        // $joinexpimages = JoinExpImage::where('exp_id', $id)->get();
-        // $images = Image::all();
-        // $hotspots = Hotspot::where('image_id', $id)->get();
-        // $photo = $request->id;//pour envoyer l'id de l'image
+
         $hotspots = Hotspot::where('image_id', $id)->get();
 
         return view('exps.photos.hotspots.show', compact('exp', 'hotspots', 'id'))
@@ -158,9 +149,7 @@ class HotspotController extends Controller
         $images = DB::table('images')
             ->join('join_exp_images', 'images.id', '=', 'join_exp_images.image_id')
             ->get();
-        // $hotspots = DB::table('hotspots')
-        //     ->join('join_image_hotspots', 'hotspots.id', '=', 'join_image_hotspots.image_id')
-        //     ->get();
+
         $hotspots = Hotspot::where('image_id', $id)->get();
 
         return view('exps.photos.hotspots.show', compact('exp', 'hotspots', 'id'));
@@ -223,9 +212,7 @@ class HotspotController extends Controller
         $images = DB::table('images')
             ->join('join_exp_images', 'images.id', '=', 'join_exp_images.image_id')
             ->get();
-        // $hotspots = DB::table('hotspots')
-        //     ->join('join_image_hotspots', 'hotspots.id', '=', 'join_image_hotspots.image_id')
-        //     ->get();
+
         $hotspots = Hotspot::where('image_id', $id)->get();
 
         return view('exps.photos.hotspots.show', compact('exp', 'hotspots', 'id'))->with('message', 'Hotspot deleted !');

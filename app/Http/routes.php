@@ -10,6 +10,13 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+
+
+Route::get('/test', 'HomeController@test');
+// Route::get('/test', function () {
+//     return view('test');
+// });
+
 Route::get('/', 'HomeController@welcome');
 // Route::get('/', function () {
 //     return view('welcome');
@@ -30,7 +37,7 @@ Route::post('cover', 'ExtraController@cover')->name('cover');
 
 // Route::get('hotspot', 'ExtraController@create');
 // Route::get('demo', 'ExtraController@demo2');
-Route::get('test', 'ExtraController@carousel');
+// Route::get('test', 'ExtraController@carousel');
 // Route::get('demo2', ['uses' => 'ExtraController@demo2', 'as' => 'cover', 'middleware' => 'auth']);
 // Route::get('demo2', 'ExtraController@demo2');
 // Route::get('cover', 'ExtraController@cover');

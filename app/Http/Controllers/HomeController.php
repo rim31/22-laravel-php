@@ -13,7 +13,10 @@ use App\Image;
 use App\JoinExpImage;
 use App\JoinUserExp;
 use App\Http\Requests;
+use App\Http\Requests\ExpRequest;
 
+
+use Auth;
 use \Storage;
 use File;
 use DB;
@@ -47,6 +50,15 @@ class HomeController extends Controller
     public function index()
     {
         return view('home');
+    }
+
+    public function test(){
+        $exps = Exp::all();
+        $users = JoinUserExp::all();
+        $images = Image::all();
+        $joins = JoinExpImage::all();
+
+        return view('test', compact('exps', 'users', 'images', 'joins'));
     }
 
 }

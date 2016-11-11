@@ -1,7 +1,23 @@
 @extends('layouts.app')
 
 @section('content')
-<link rel="stylesheet" href="{{ URL::asset('css/hotspotArea.css')}}" />
+<!-- ======= 2.01 Page Title Area ====== -->
+<div class="pageTitleArea animated">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="h3">Hotspot</div>
+        <ul class="pageIndicate">
+          <li><a href="">expérience</a></li>
+          <li><a href="">photo</a></li>
+          <li><a href="">hotspot</a></li>
+          <li><a href="">index</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <div class="container">
     <div class="col-md-10 col-md-offset-1">

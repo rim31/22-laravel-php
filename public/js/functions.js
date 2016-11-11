@@ -78,7 +78,7 @@ $('#photoLink').click(function(e) {
 
 //  $('.displayOffset').html('Position X :'+hSpotX+' Position Y :'+hSpotY+' taille fenetre'+W + '/' +H);
     $('.hotspotTarget2').addClass('circleSmall').offset({ top: e.pageY, left: e.pageX});
-    $('body').animate({scrollTop: 2 * H}, 0);
+    $('body').animate({scrollTop: 3 * H}, 0);
 
 });
 
