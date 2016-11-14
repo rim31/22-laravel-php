@@ -26,25 +26,25 @@ $('.hotspotArea').click(function(e) {
 
     $('#image_idX').val(image_idY);
     $('#image_idY').val(image_idY);
-
+//onselection le lieu de l'image et on affiche la photo miniature
     $('.selectLink').css("display", 'block');
     // $('#imageLink src').val("{{ URL::asset('/img/'.$exp->id.'/'.$joinexpimages[$i]->image_id.'.JPG') }}");
     $('#imageLink src').val("{{ URL::asset('/img/'.$exp->id.'/'.$joinexpimages[$i]->image_id.'.PNG') }}");
-//affichage des valeur de la postio de la souris
+//affichage des valeur de la postion de la souris
 //$('.displayOffset').html('Position X :'+hSpotX+' Position Y :'+hSpotY+' taille fenetre'+W + '/' +H);
+//affichage du spot sur la 1ere image
     $('.hotspotTarget').addClass('circleLarge').offset({ top: e.pageY, left: e.pageX});
     $('body').animate({scrollTop: H}, 0);
-    console.log(hSpotX, hSpotY, image_idX, image_idY);
-
+    // console.log(hSpotX, hSpotY, image_idX, image_idY);//debug : affichage postio réelle et en fct de quartz
 });
 
 
-$(function() {
+$(function() {//onfait descendre la page vers les miniatures
   $('.pop').on('click', function() {
     $('.imagepreview').attr('src', $(this).find('img').attr('src'));
       $('#photoLink').attr('src', $(this).find('img').attr('src'));
       $('#photoLink').css("display", 'block');
-      $('body').animate({scrollTop: 1000}, 0);
+      $('body').animate({scrollTop: 1000}, 0);//on descends de 1000 pixel, ca suffit ?
     });
 });
 
@@ -62,11 +62,10 @@ $('#photoLink').click(function(e) {
     var latitude = 90 - 180 * hSpotY / H;
     var image_LinkX = hSpotX / W;
     var image_LinkY = hSpotY / H;
-
+//on injecte les valeys suivante dans le formulaire pour les mettre en bdd
     $('#shift_x').val(longitude);
     $('#shift_y').val(latitude);
     $('#shift_z').val("0.5");
-
 //position dans l'image d'arrivée
     // $('#image_LinkX').val(image_LinkX);
     // $('#image_LinkY').val(image_LinkY);
@@ -75,10 +74,8 @@ $('#photoLink').click(function(e) {
     $('.hotspotSave').css("display", 'block');
     // $('#imageLink src').val("{{ URL::asset('/img/'.$exp->id.'/'.$joinexpimages[$i]->image_id.'.JPG') }}");
     $('#imageLink src').val("{{ URL::asset('/img/'.$exp->id.'/'.$joinexpimages[$i]->image_id.'.PNG') }}");
-
+//affichage du spot de destination final
 //  $('.displayOffset').html('Position X :'+hSpotX+' Position Y :'+hSpotY+' taille fenetre'+W + '/' +H);
     $('.hotspotTarget2').addClass('circleSmall').offset({ top: e.pageY, left: e.pageX});
     $('body').animate({scrollTop: 3 * H}, 0);
-
 });
-

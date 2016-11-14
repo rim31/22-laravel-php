@@ -137,6 +137,7 @@
         </div>
     </header>
     <!-- ======= /1.01 Header Area ====== -->
+
     <!-- ===========message success / alert =============== -->
     <?php if(Session::has('message')): ?>
     <div class="alert alert-success"><?php echo e(Session::get('message')); ?></div>
@@ -150,6 +151,7 @@
     <?php endif; ?>
 
     <?php echo $__env->yieldContent('content'); ?>
+    <!-- ===========/message success / alert =============== -->
 
 
 

@@ -2,11 +2,11 @@
 
 <!-- Main Content -->
 @section('content')
-<div class="container">
+<div class="clientLogin">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Reset Password</div>
+            <div class="checkoutWrep">
+                <div class="bill panel-heading">Reset Password</div>
                 <div class="panel-body">
                     @if (session('status'))
                         <div class="alert alert-success">
@@ -33,7 +33,7 @@
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="contactBtn Btn">
                                     <i class="fa fa-btn fa-envelope"></i> Send Password Reset Link
                                 </button>
                             </div>
@@ -44,4 +44,7 @@
         </div>
     </div>
 </div>
+
+<div class="sectionBar"></div>
+
 @endsection

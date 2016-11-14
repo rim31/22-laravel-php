@@ -137,6 +137,7 @@
         </div>
     </header>
     <!-- ======= /1.01 Header Area ====== -->
+
     <!-- ===========message success / alert =============== -->
     @if(Session::has('message'))
     <div class="alert alert-success">{{ Session::get('message') }}</div>
@@ -150,6 +151,7 @@
     @endif
 
     @yield('content')
+    <!-- ===========/message success / alert =============== -->
 
 
 

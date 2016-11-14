@@ -2,20 +2,21 @@
 
 @section('content')
 
-    <!-- ======= 2.01 Page Title Area ====== -->
-    <div class="pageTitleArea animated">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="h3">Expérience</div>
-                    <ul class="pageIndicate">
-                        <li><a href="">home</a></li>
-                        <li><a href="">index</a></li>
-                    </ul>
-                </div>
+<!-- ======= 2.01 Page Title Area ====== -->
+<div class="pageTitleArea animated">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="h3">Expérience</div>
+                <ul class="pageIndicate">
+                    <li><a href="">home</a></li>
+                    <li><a href="">index</a></li>
+                </ul>
             </div>
         </div>
     </div>
+</div>
+<!-- ======= /2.01 Page Title Area ====== -->
 
 <!-- ======= 3.01 Domain Area ====== -->
 <div class="domainSearchArea secPdng">

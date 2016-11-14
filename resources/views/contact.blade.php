@@ -200,9 +200,9 @@
 
     <!-- ======= /2.01 Page Title Area ====== -->
 
-	<div class="contactArea secPdng animated">
-		<div class="container">
-			<div class="row">
+    <div class="cartArea secPdngB">
+        <div class="container">
+            <div class="col-md-12 animated">
 				<div class="col-md-12">
 					<div class="contactTxt">
 						<p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros <br>et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</p>
