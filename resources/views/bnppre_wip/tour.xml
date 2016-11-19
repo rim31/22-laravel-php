@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<experience startMediaId="entrance">
+  <config>
+    <param key="hotspotSrc"         value="bnp.png"/>
+    <param key="hotspotGeometry"    value="square"/>
+    <param key="hotspotColor"       value="0xffffff"/>
+    <param key="hotspotTriggers"    value="dblclick,tap,gaze"/>
+    <param key="loadingDuration"    value="1500"/>
+    <param key="loadingEffect"      value="spritesheet(4)"/>
+  </config>
+
+  <!-- 1st floor -->
+
+  <media id="entrance" poster="pictures/1.JPG">
+    <hotspot mediaId="livingroom" shift="0,-30,0">
+      <position depth="70" latitude="-15" longitude="0"/>
+      <description>Living room</description>
+    </hotspot>
+    <hotspot mediaId="stairs" shift="20,-70,0">
+      <position depth="65" latitude="15" longitude="120"/>
+      <description>Stairs</description>
+    </hotspot>
+    <hotspot mediaId="kitchen" shift="0,160,0">
+      <position depth="80" latitude="0" longitude="128"/>
+      <description>Kitchen</description>
+    </hotspot>
+  </media>
+
+  <media id="livingroom" poster="pictures/2.JPG">
+    <hotspot mediaId="entrance" shift="0,180,0">
+      <position depth="70" latitude="5" longitude="120"/>
+      <description>Entrance</description>
+    </hotspot>
+    <hotspot mediaId="stairs" shift="20,-70,0">
+      <position depth="85" latitude="15" longitude="95"/>
+      <description>Stairs</description>
+    </hotspot>
+  </media>
+
+  <media id="stairs" poster="pictures/6.JPG">
+    <hotspot mediaId="entrance" shift="0,-60,0">
+      <position depth="70" latitude="-15" longitude="150"/>
+      <description>Entrance</description>
+    </hotspot>
+    <hotspot mediaId="livingroom" shift="0,-75,0">
+      <position depth="70" latitude="-15" longitude="180"/>
+      <description>Living room</description>
+    </hotspot>
+    <hotspot mediaId="bedroom_1" shift="0,0,0">
+      <position depth="70" latitude="-15" longitude="120"/>
+      <description>Bedroom</description>
+    </hotspot>
+    <hotspot mediaId="kitchen" shift="0,160,0">
+      <position depth="40" latitude="-20" longitude="10"/>
+      <description>Kitchen</description>
+    </hotspot>
+    <hotspot mediaId="stairs_top" shift="0,-15,0">
+      <position depth="40" latitude="20" longitude="-90"/>
+      <description>Stairs</description>
+    </hotspot>
+  </media>
+
+  <media id="bedroom_1" poster="pictures/8.JPG">
+    <hotspot mediaId="stairs" shift="-20,110,0">
+      <position depth="75" latitude="10" longitude="-45"/>
+      <description>Stairs</description>
+    </hotspot>
+    <hotspot mediaId="bathroom_1" shift="0,150,0">
+      <position depth="75" latitude="10" longitude="45"/>
+      <description>Bathroom</description>
+    </hotspot>
+    <hotspot mediaId="bedroom_1b" shift="0,180,5">
+      <position depth="70" latitude="15" longitude="90"/>
+      <description>Bedroom</description>
+    </hotspot>
+  </media>
+
+  <media id="bedroom_1b" poster="pictures/11.JPG">
+    <hotspot mediaId="stairs" shift="-20,110,0">
+      <position depth="85" latitude="0" longitude="-147"/>
+      <description>Stairs</description>
+    </hotspot>
+    <hotspot mediaId="bathroom_1" shift="0,150,0">
+      <position depth="70" latitude="-10" longitude="-90"/>
+      <description>Bathroom</description>
+    </hotspot>
+  </media>
+
+  <media id="bathroom_1" poster="pictures/10.JPG">
+    <hotspot mediaId="bedroom_1" shift="0,0,0">
+      <position depth="50" latitude="0" longitude="55"/>
+      <description>Bedroom</description>
+    </hotspot>
+  </media>
+
+  <media id="kitchen" poster="pictures/7.JPG">
+    <hotspot mediaId="entrance" shift="0,-60,0">
+      <position depth="80" latitude="0" longitude="-177"/>
+      <description>Entrance</description>
+    </hotspot>
+    <hotspot mediaId="bedroom_1" shift="0,0,0">
+      <position depth="75" latitude="0" longitude="172"/>
+      <description>Bedroom</description>
+    </hotspot>
+  </media>
+
+  <!-- 2nd floor -->
+
+  <media id="stairs_top" poster="pictures/13.JPG">
+    <hotspot mediaId="stairs" shift="0,170,0">
+      <position depth="60" latitude="-35" longitude="-60"/>
+      <description>Kitchen</description>
+    </hotspot>
+    <hotspot mediaId="office" shift="0,90,0">
+      <position depth="40" latitude="0" longitude="105"/>
+      <description>Office</description>
+    </hotspot>
+    <hotspot mediaId="bathroom_2" shift="0,130,0">
+      <position depth="80" latitude="0" longitude="-30"/>
+      <description>Bathroom</description>
+    </hotspot>
+    <hotspot mediaId="bedroom_2" shift="0,135,0">
+      <position depth="80" latitude="-5" longitude="-5"/>
+      <description>Bedroom</description>
+    </hotspot>
+    <hotspot mediaId="bedroom_3" shift="0,-45,0">
+      <position depth="80" latitude="11" longitude="-12"/>
+      <description>Bedroom</description>
+    </hotspot>
+  </media>
+
+  <media id="balcony" poster="pictures/16.JPG">
+    <hotspot mediaId="office" shift="0,130,0">
+      <position depth="60" latitude="15" longitude="-140"/>
+      <description>Office</description>
+    </hotspot>
+    <hotspot mediaId="bedroom_2" shift="0,-130,0">
+      <position depth="60" latitude="15" longitude="-40"/>
+      <description>Bedroom</description>
+    </hotspot>
+    <hotspot mediaId="bedroom_3" shift="0,-45,0">
+      <position depth="85" latitude="5" longitude="-10"/>
+      <description>Bedroom</description>
+    </hotspot>
+  </media>
+
+  <media id="office" poster="pictures/15.JPG">
+    <hotspot mediaId="stairs_top" shift="0,-15,0">
+      <position depth="70" latitude="0" longitude="175"/>
+      <description>Stairs</description>
+    </hotspot>
+    <hotspot mediaId="balcony" shift="0,0,0">
+      <position depth="40" latitude="0" longitude="60"/>
+      <description>Balcony</description>
+    </hotspot>
+  </media>
+
+  <media id="bathroom_2" poster="pictures/14.JPG">
+    <hotspot mediaId="stairs_top" shift="0,-15,0">
+      <position depth="40" latitude="0" longitude="90"/>
+      <description>Stairs</description>
+    </hotspot>
+  </media>
+
+  <media id="bathroom_3" poster="pictures/23.JPG">
+    <hotspot mediaId="bedroom_3" shift="0,-45,0">
+      <position depth="40" latitude="5" longitude="150"/>
+      <description>Bedroom</description>
+    </hotspot>
+  </media>
+
+  <media id="bedroom_2" poster="pictures/20.JPG">
+    <hotspot mediaId="stairs_top" shift="0,-15,0">
+      <position depth="40" latitude="0" longitude="-100"/>
+      <description>Stairs</description>
+    </hotspot>
+    <hotspot mediaId="balcony" shift="0,180,0">
+      <position depth="40" latitude="0" longitude="115"/>
+      <description>Stairs</description>
+    </hotspot>
+  </media>
+
+  <media id="bedroom_3" poster="pictures/22.JPG">
+    <hotspot mediaId="stairs_top" shift="0,-15,0">
+      <position depth="70" latitude="0" longitude="-60"/>
+      <description>Stairs</description>
+    </hotspot>
+    <hotspot mediaId="balcony" shift="0,180,0">
+      <position depth="40" latitude="0" longitude="180"/>
+      <description>Balcony</description>
+    </hotspot>
+    <hotspot mediaId="bathroom_3" shift="0,-170,0">
+      <position depth="40" latitude="0" longitude="-10"/>
+      <description>Bathroom</description>
+    </hotspot>
+  </media>
+</experience>

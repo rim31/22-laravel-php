@@ -11,6 +11,9 @@
     <link rel="stylesheet" href="<?php echo e(URL::asset('css/custom/style.css')); ?>">
     <!-- custom css file -->
     <link rel="stylesheet" href="<?php echo e(URL::asset('css/custom/customStyle.css')); ?>">
+    <!-- main css bootstrap -->
+    <link rel="stylesheet" href="<?php echo e(URL::asset('css/bootstrapCSS/bootstrap.min.css')); ?>">
+<!--     <link rel="stylesheet" href="<?php echo e(URL::asset('css/bootstrapCSS/bootstrap-theme.min.css')); ?>">     -->
     <!-- responsive css file -->
     <link rel="stylesheet" href="<?php echo e(URL::asset('css/responsive/responsive.css')); ?>">
     <!-- custom css for hotspot -->
@@ -18,6 +21,14 @@
     <!-- custom css hotspot & hotspotArea-->
     <link rel="stylesheet" href="<?php echo e(URL::asset('css/hotspot.css')); ?>" />
     <link rel="stylesheet" href="<?php echo e(URL::asset('css/hotspotArea.css')); ?>" />
+    <!-- custom css for experience -->
+    <link rel="stylesheet" href="<?php echo e(URL::asset('css/custom/exp.css')); ?>">
+    <!-- custom css for photo -->
+    <link rel="stylesheet" href="<?php echo e(URL::asset('css/custom/photo.css')); ?>">
+    <!-- custom css for hotspot -->
+    <link rel="stylesheet" href="<?php echo e(URL::asset('css/custom/hotspot.css')); ?>">
+
+
     <!-- favicon -->
     <link rel="icon" type="image/png" href="<?php echo e(URL::asset('img/favicon.png')); ?>">
 
@@ -120,7 +131,7 @@
                                     </ul>
                                 </li>
                                 <?php if(!Auth::guest()): ?>
-                                <li><a href="<?php echo e(url('/exp')); ?>">Mes expériences</a></li> 
+                                <li><a href="<?php echo e(url('/exp')); ?>">Mes expériences</a></li>
                                 <?php endif; ?>
                                 <li><a href="contact.html">Contact</a></li>
                             </ul>
@@ -138,8 +149,20 @@
     </header>
     <!-- ======= /1.01 Header Area ====== -->
 
+    <!-- ===========message success / alert =============== -->
+    <?php if(Session::has('message')): ?>
+    <div class="alert alert-success"><?php echo e(Session::get('message')); ?></div>
+    <?php endif; ?>
+    <?php if($errors->has()): ?>
+    <ul class="aler alert-danger">
+        <?php foreach($errors->all() as $error): ?>
+        <li><?php echo e($error); ?></li>
+        <?php endforeach; ?>
+    </ul>
+    <?php endif; ?>
 
     <?php echo $__env->yieldContent('content'); ?>
+    <!-- ===========/message success / alert =============== -->
 
 
 
@@ -217,7 +240,8 @@
     <script src="<?php echo e(URL::asset('js/waypoints.min.js')); ?>"></script> <!-- waypoint -->
     <script src="<?php echo e(URL::asset('js/chatScript.js')); ?>" type="text/javascript"></script> <!--End of Tawk.to Script-->
     <script src="<?php echo e(URL::asset('js/active.js')); ?>"></script> <!-- active js -->
-    <script src="<?php echo e(URL::asset('js/hotspot.js')); ?>"></script> <!-- hotspot js -->
+    <!-- <script src="<?php echo e(URL::asset('js/hotspot.js')); ?>"></script> -->
+    <!-- hotspot js -->
 
 </body>
 </html>

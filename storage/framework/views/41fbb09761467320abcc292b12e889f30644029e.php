@@ -43,8 +43,14 @@
         <?php echo Form::close(); ?>
 
       </div>
+
+<div>
+  <?php echo e(link_to_route('exp.photo.hotspot.create', 'Editer spot', [$exp->id, $id], ['class' => 'btnCart Btn add'])); ?>
+
+</div>
+
       <div class="">
-        <?php echo e(link_to_route('exp.photo.index', 'Retour', [$exp->id], ['class' => 'btnCart Btn'])); ?>
+        <?php echo e(link_to_route('exp.photo.index', 'Retour', [$exp->id], ['class' => 'Btn'])); ?>
 
         <?php echo Form::close(); ?>
 

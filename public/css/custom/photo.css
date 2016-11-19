@@ -1,0 +1,97 @@
+/* CUSTOM CSS */
+/* Graphic Charter */
+.green{
+	color: #2ECC71;
+}
+
+.grey{
+	color: #9AADBF !important;
+}
+
+/* style of the index pages */
+/* fixing size & border of the imgs */
+.imgIndex{
+	flex-grow: 0;
+	flex-shrink: 0;
+	flex-basis: 50%;
+	align-self: center;
+	justify-content: space-around;
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.imgIndex:hover{
+	border: 3px solid #2F96F1;
+}
+
+/* expRows */
+.photosList{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+}
+
+
+.editRemovePhoto{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+}
+
+.photoName{
+	flex-grow: 0;
+	flex-shrink: 0;
+	flex-basis: 50%;
+	align-self: center;
+	padding-left: 10%;
+}
+
+.buttonPhoto {
+	vertical-align: middle;
+	text-align: center;
+	padding: 2px;
+}
+
+.greenButton {
+	background: #2ECC71;
+}
+
+body > div.domainSearchArea.secPdng > div > div > div > ul > li.availableDomain.clearfix.animated.fadeInUp > div.flexButton > div > a
+{
+	margin-bottom: 8px;
+}
+
+body > div.domainSearchArea.secPdng > div > div > div:nth-child(3) > ul > li.availableDomain.clearfix.animated.fadeInUp > div.domainBtn.clearfix.flexButton > div:nth-child(2) > form > button
+{
+	margin-bottom: 8px;
+}
+
+/*test olivier media Query */
+@media only screen and (max-width: 1480px)
+{
+	.imgIndex {
+		height: 220px;
+		width: auto;
+	}
+}
+
+@media only screen and (max-width: 767px)
+{
+	.imgIndex {
+		height: 200px;
+		width: auto;
+	}
+
+	.photosList{
+		flex-direction: column;
+	}
+}
+
+@media only screen and (max-width: 480px)
+{
+	.imgIndex {
+		height: 100px;
+		width: auto;
+	}
+}

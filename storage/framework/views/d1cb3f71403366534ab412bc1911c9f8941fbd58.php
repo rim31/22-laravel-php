@@ -15,9 +15,6 @@
 	</div>
 </div>
 
-<?php if(Session::has('message')): ?>
-<div class="alert alert-success"><?php echo e(Session::get('message')); ?></div>
-<?php endif; ?>
 <!-- ======= 3.01 Domain Area ====== -->
 <div class="domainSearchArea secPdng">
 	<div class="container">
@@ -32,164 +29,129 @@
 					<li class="availableDomain clearfix  animated">
 						<div class="aDomainLeft clearfix">
 							<div class="DomainName">
-								<div class="h3"> Vos photos : <?php echo e(link_to_route('exp.photo.hotspot.index', $exp->name, [$exp->id, 0])); ?></div>
+								<div class="h3"> Vos photos : <?php echo e(link_to_route('exp.show', $exp->name, [$exp->id])); ?></div>
 								<span><?php echo e(link_to_route('exp.photo.create', 'Ajouter photo', [$exp->id], ['class' => 'cartBtn Btn add'])); ?></span>
 							</div>
 						</div>
-						<div class="domainBtn clearfix">         
-							<?php if($exp->photo): ?>
-							<?php echo e(link_to_route('exp.photo.hotspot.show', 'Visite Virtuelle', [$exp->id, $exp->photo, $exp->photo], ['class' => 'btnCart Btn'])); ?>
+						<div class="domainBtn clearfix flexButton">
+							<div>
+								<?php if($exp->photo): ?>
+								<?php echo e(link_to_route('exp.photo.hotspot.show', 'Visite Virtuelle', [$exp->id, $exp->photo, $exp->photo], ['class' => 'btn greenButton buttonPhoto'])); ?>
 
-							<?php else: ?>
-							favoris d'abord
-							<?php endif; ?>
+							</div>
+							<div>									<!-- =====test Quartz===== -->
+								<?php echo Form::open(array('route'=>['quartz'])); ?>
 
-							<?php echo e(link_to_route('exp.index', 'Retour', [$exp->id], ['class' => 'btn btn-default'])); ?>
+								<input type="text" name="exp" value="<?php echo e($exp->id); ?>" hidden>
+								<input type="text" name="name" value="<?php echo e($exp->name); ?>" hidden>
+								<input type="text" name="id" value="<?php echo e($exp->photo); ?>" hidden>
+								<?php echo Form::button('Quartz  <i class="fa fa-video-camera fa-1x" aria-hidden="true"></i>', ['class'=>'Btn', 'type'=>'submit']); ?>
+
+								<!-- =====/test Quartz===== -->
+								<?php echo Form::close(); ?>
+
+							</div>
+							<div>
+								<?php else: ?>
+								favoris d'abord
+								<?php endif; ?>
+
+								<?php echo e(link_to_route('exp.index', 'Retour', [$exp->id], ['class' => 'btn btn-default'])); ?>
+
+							</div>
+
+
 
 						</div>
 
 					</li>
 					<?php for($i = 0; $i < sizeOf($joins); $i++): ?>
 					<?php if($joins[$i]->delete != 1): ?>
-					<li class="singleDomain  animated">
-						<div class="h4">
+					<li class="singleDomain animated">
+						<div class="h4 photosList">
+							<div>					
 								<a href="">
-									<img src="<?php echo e(URL::asset('/img/'.$exp->id.'/'.$joins[$i]->id.'.PNG')); ?>" alt="immovr" class="photo" style="width:199px;height:99px;">
+									<img src="<?php echo e(URL::asset('/img/'.$exp->id.'/'.$joins[$i]->id.'.PNG')); ?>" alt="immovr" class="imgIndex">
 								</a>
-								<?php echo e(link_to_route('exp.photo.hotspot.create', 'Editer spot', [$exp->id, $joins[$i]->id], ['class' => 'cartBtn add'])); ?>
+							</div>
+							<div class="buttonPhoto">
+								<?php echo e(link_to_route('exp.photo.hotspot.create', 'Editer spot', [$exp->id, $joins[$i]->id], ['class' => 'btnCart Btn greenButton'])); ?>
 
-							<div class="singleDomainRight">
+							</div>
+							<div class="singleDomainRight buttonPhoto">
 								<span>
 									<?php if($joins[$i]->id == $exp->photo): ?>
-									<i class="fa fa-star" aria-hidden="true"></i> favoris
+									<i class="fa fa-star fa-1x" aria-hidden="true"></i> favoris
 									<?php else: ?>
 									<?php echo Form::open(array('route'=>['cover'])); ?>
 
 									<input type="text" name="exp" value="<?php echo e($exp->id); ?>" hidden>
 									<input type="text" name="name" value="<?php echo e($exp->name); ?>" hidden>
 									<input type="text" name="id" value="<?php echo e($joins[$i]->id); ?>" hidden>
-									<?php echo Form::button('Choix  <i class="fa fa-star-o" aria-hidden="true"></i>', ['class'=>'btn btn-default', 'type'=>'submit']); ?>
+									<div class="buttonPhoto">
+										<?php echo Form::button('Choix  <i class="fa fa-star-o fa-1x" aria-hidden="true"></i>', ['class'=>'btnCart Btn btn-default', 'type'=>'submit']); ?>
 
-									<?php echo Form::close(); ?>
+										<?php echo Form::close(); ?>
 
+									</div>
 									<?php endif; ?>
-	<!-- <?php echo e(link_to_route('exp.photo.hotspot.show', 'SHOW test', [$exp->id, $joins[$i]->id, $exp->photo], ['class' => 'btn btn-info'])); ?> -->
+									<!-- <?php echo e(link_to_route('exp.photo.hotspot.show', 'SHOW test', [$exp->id, $joins[$i]->id, $exp->photo], ['class' => 'btn btn-info'])); ?>-->
 								</span>
-								<span>
+								<div>
 									<?php echo Form::open(array('route'=>['exp.photo.destroy', $exp->id, $joins[$i]->id], 'method'=>'DELETE')); ?>
 
 									<input type="text" name="image" value="<?php echo e($joins[$i]->id); ?>" hidden>
-									<?php echo Form::button('Effacer la photo', ['class'=>'btnCart Btn added', 'type'=>'submit']); ?>
+									<?php echo Form::button('Effacer la photo', ['class'=>'btnCart Btn added', 'onclick'=>"return(confirm('Etes-vous sûr de vouloir supprimer cette photo?'));", 'type'=>'submit']); ?>
 
 									<?php echo Form::close(); ?>
 
-								</span>
+								</div>
 							</div>
 						</div>
 					</li>
 					<?php endif; ?>
 					<?php endfor; ?>
-					</ul>
-				</div>
+				</ul>
 			</div>
 		</div>
-		</div
-
-		
-<!-- ======= /3.01 Domain Area ====== -->
-
-    <div class="sectionBar"></div>
+	</div>
+	</div
 
 
+	<!-- ======= /3.01 Domain Area ====== -->
 
-
-
-
+	<div class="sectionBar"></div>
+	<!-- ==========upoload photo ============ -->
+	<div class="domainCtaArea  animated">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-10 col-md-offset-1">
-					<div class="panel panel-default">
-						<div class="panel-heading">Gallerie photos</div>
-						<?php if(Session::has('message')): ?>
-						<div class="alert alert-success"><?php echo e(Session::get('message')); ?></div>
-						<?php endif; ?>
-						<div class="panel-body">
-							<h2><?php echo e(link_to_route('exp.photo.hotspot.index', $exp->name, [$exp->id, 0])); ?></h2><?php echo e($exp->adress); ?><BR>
-							<BR>
-								<div class="col-sm-8">
-									<?php echo e(link_to_route('exp.photo.create', 'Ajouter photo', [$exp->id], ['class' => 'btn btn-success'])); ?>
+				<div class="col-md-12">
+					<div class="domainCta">
+						<form action="<?php echo e(route('exp.photo.store', $exp->id)); ?>" method="post"
+							enctype="multipart/form-data">
+							<div class="fileInput">
+								<span class="fileTxt">Glisser et déposer ou</span>
+								<span class="fileSpan">
+									<input type="file" name="file" id="file" class="inputfile">
+									<label for="file">importer</label>
+									<input type="text" name="id" value="<?php echo e($exp->id); ?>" hidden>
+									<input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">
+								</span>
+								<span class="fileTxt">votre image ici</span>
+							</div>
+							<div class="captcha" data-toggle="tooltip" data-placement="top" title="Active Me!"><span></span> I am not a robot</div>
+							<input type="submit" value="envoyer la photo" class="btn btn-success">
+							<?php echo e(link_to_route('exp.photo.index', 'Retour', [$exp->id], ['class' => 'btnCart Btn added'])); ?>
 
-								</div>
-								<div class="col-sm-2">
-									<?php if($exp->photo): ?>
-									<?php echo e(link_to_route('exp.photo.hotspot.show', 'Visite Virtuelle', [$exp->id, $exp->photo, $exp->photo], ['class' => 'btn btn-success'])); ?>
-
-									<?php else: ?>
-									favoris d'abord
-									<?php endif; ?>
-								</div>
-								<div class="col-sm-2">
-									<?php echo e(link_to_route('exp.index', 'Retour', [$exp->id], ['class' => 'btn btn-default'])); ?>
-
-								</div>
-
-								<table class="table">
-									<tr>
-										<th>Photo</th>
-										<th>Editer</th>
-										<th>Action</th>
-										<th>Favoris</th>
-<!-- 									<th>Gallerie</th>
--->								<tr>
-<?php for($i = 0; $i < sizeOf($joins); $i++): ?>
-<?php if($joins[$i]->delete != 1): ?>
-<td>
-	<img src="<?php echo e(URL::asset('/img/'.$exp->id.'/'.$joins[$i]->id.'.PNG')); ?>"
-	alt="immovr" class="photo" style="width:100px;height:50px;">
-
-</td>
-<td>
-	<?php echo e(link_to_route('exp.photo.hotspot.create', 'Editer spot', [$exp->id, $joins[$i]->id], ['class' => 'btn btn-primary'])); ?>
-
-</td>
-<td><?php echo Form::open(array('route'=>['exp.photo.destroy', $exp->id, $joins[$i]->id], 'method'=>'DELETE')); ?>
-
-	<input type="text" name="image" value="<?php echo e($joins[$i]->id); ?>" hidden>
-	<?php echo Form::button('Effacer la photo', ['class'=>'btn btn-danger', 'type'=>'submit']); ?>
-
-</td>
-<?php echo Form::close(); ?>
-
-<td>
-	<?php if($joins[$i]->id == $exp->photo): ?>
-	favoris
-	<?php else: ?>
-	<?php echo Form::open(array('route'=>['cover'])); ?>
-
-	<input type="text" name="exp" value="<?php echo e($exp->id); ?>" hidden>
-	<input type="text" name="name" value="<?php echo e($exp->name); ?>" hidden>
-	<input type="text" name="id" value="<?php echo e($joins[$i]->id); ?>" hidden>
-	<?php echo Form::button('Choix', ['class'=>'btn btn-default', 'type'=>'submit']); ?>
-
-	<?php echo Form::close(); ?>
-
-	<?php endif; ?>
-</td>
-<!-- 									<td>
-										<?php echo e(link_to_route('exp.photo.hotspot.show', 'SHOW test', [$exp->id, $joins[$i]->id, $exp->photo], ['class' => 'btn btn-info'])); ?>
-
-									</td> -->
-									<?php endif; ?>
-								</tr>
-								<?php endfor; ?>
-							</table>
-						</div>
+						</form>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
-<?php $__env->stopSection(); ?>
+	<!-- ==========/upoload photo ============ -->
+
+
+	<?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

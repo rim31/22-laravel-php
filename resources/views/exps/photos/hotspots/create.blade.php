@@ -22,7 +22,9 @@
   <div class="container">
     <div class="row">
       <div class="sectionTitle animated">
-        <div class="h2">Placer votre hotspot sur l'image </div>
+          <div class="h2">
+          <span>Placer</span> votre hotspot sur l'image.
+          </div>
       </div>
     </div>
     <!-- ======================== bouton suppr et retour ========================= -->
@@ -31,11 +33,11 @@
         <div class="DomainName">
           <div class="h3">
             {{$exp->name}}
-            <!--{{ link_to_route('exp.photo.hotspot.index', $exp->name, [$exp->id, $exp->photo]) }}--> 
+            <!--{{ link_to_route('exp.photo.hotspot.index', $exp->name, [$exp->id, $exp->photo]) }}-->
           </div>
         </div>
       </div>
-      <div class="domainBtn clearfix">         
+      <div class="domainBtn clearfix">
         <div class="col-md-12">
          <span>
           <!-- Button trigger modal -->
@@ -64,8 +66,10 @@
         </div>
         <!-- ===================miniature selectionnable en ===================== -->
         <div class="row selectLink ">
-          <div class="postTitle h3 animated">
-            Selectionner la destination
+          <div class="sectionTitle animated">
+              <div class="h2">
+              <span>Sélectionner</span> une image <br> Puis <span>placer</span> la postition d'arrivé
+              </div>
           </div>
           <!-- <h3>Selectionner la destination</h3> -->
           <form action="{{ route('exp.photo.hotspot.store', [$exp->id, $id])}}" method="post">
@@ -94,7 +98,7 @@
         <div id="hospotLink" class="photo animated">
           <div class="hotspotTarget2 animated">
           </div>
-<!--                 <p>
+                <!--  <p>
                   <h4>Placer votre point d'arrivée</h4>
                 </p> -->
                 <img src="" alt="immovr" id="photoLink">
@@ -106,16 +110,18 @@
                   <div class="rowhotspotSave">
                     <div class="col-md-12hotspotSave">
                       <div class="domainCta hotspotSave">
-                        <div class="h2">Entrer le nom puis Valider
+                        <div class="h2">Compléter puis Valider
                         </div>
-                        <div class="panel-body hotspotSave">
+
+                        <div class="hotspotSave hotspotValider">
                           <select name="position_z" id="single">
                             <option>petit</option>
                             <option>moyen</option>
                             <option>grand</option>
                           </select>
-                          <input id="media_id" name="media_id" type="text" value="" placeholder="Nom">
-                          <p></p>
+                          <input id="media_id" name="media_id" type="text"  maxlength="20" value="" placeholder="Nom">
+                          <input id="description_spot" name="description_spot" type="text"  maxlength="20" value="" placeholder="description">
+
                           <input id="shift_x" type="text" name="shift_x" value="" hidden>
                           <input id="shift_y" type="text" name="shift_y" value="" hidden>
                           <input id="shift_z" type="text" name="shift_z" value="" hidden>
@@ -126,7 +132,6 @@
                           <input id="longitude" type="text" name="longitude" value="" hidden>
                           <input id="exp_id" type="text" name="exp_id" value={{$exp->id}} hidden>
                           <input id="image_id" type="text" name="image_id" value={{$id}} hidden>
-                          <input id="description" type="text" name="description" value="" hidden>
                           <input id="image_idX" type="text" name="image_idX" value="" hidden>
                           <input id="image_idY" type="text" name="image_idY" value="" hidden>
                           <input id="image_linkX" type="text" name="image_linkX" value="" hidden>
@@ -183,7 +188,3 @@
     <script language="JavaScript" type="text/javascript" src="{{ URL::asset('js/functions.js') }}"></script>
 
     @endsection
-
-
-
-

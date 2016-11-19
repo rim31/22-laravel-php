@@ -42,8 +42,13 @@
         {!! Form::button('supprimer les hotspots', ['class'=>'btnCart Btn added', 'type'=>'submit']) !!}
         {!! Form::close() !!}
       </div>
+
+<div>
+  {{ link_to_route('exp.photo.hotspot.create', 'Editer spot', [$exp->id, $id], ['class' => 'btnCart Btn add']) }}
+</div>
+
       <div class="">
-        {{ link_to_route('exp.photo.index', 'Retour', [$exp->id], ['class' => 'btnCart Btn']) }}
+        {{ link_to_route('exp.photo.index', 'Retour', [$exp->id], ['class' => 'Btn']) }}
         {!! Form::close() !!}
       </div>
      </div> 

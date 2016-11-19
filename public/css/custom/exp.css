@@ -1,0 +1,122 @@
+/* CUSTOM CSS */
+/* Graphic Charter */
+.green{
+	color: #2ECC71;
+}
+
+.grey{
+	color: #9AADBF !important;
+}
+
+/* style of the index pages */
+/* fixing size & border of the imgs */
+.imgIndex{
+	flex-grow: 0;
+	flex-shrink: 0;
+	flex-basis: 50%;
+	align-self: center;
+}
+
+.imgIndex:hover{
+	border: 3px solid #2F96F1;
+}
+
+/* main */
+.titleExp{
+	margin-top: 0;
+	margin-bottom: 10px;
+	color: #fefefe;
+}
+
+/* expRows */
+.experiencesList{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+}
+
+
+.editRemoveExp{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+}
+
+.expName{
+	flex-grow: 0;
+	flex-shrink: 0;
+	flex-basis: 50%;
+	align-self: center;
+	padding-left: 10%;
+}
+
+.iconExp {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+.buttonPhoto {
+	vertical-align: middle;
+	text-align: center;
+}
+
+.greenButton {
+	background: #2ECC71;
+}
+
+/*test olivier media Query */
+
+/* démo Olivier */
+@media only screen and (max-width: 767px)
+{
+	.experiencesList{
+		flex-direction: column;
+	}
+
+	body > div.domainSearchArea.secPdng > div > div.col-md-12 > ul > li > div > div.singleDomainRight.editRemoveExp > div > form > a
+	{
+		width: 100%;
+	}
+
+	/*body > div.domainSearchArea.secPdng > div > div.col-md-12 > ul > li > div > div.expName{
+		margin: 20px 0;
+  		padding: 0;
+	}
+
+	body > div.domainSearchArea.secPdng > div > div.col-md-12 > ul > li > div > div.singleDomainRight.editRemoveExp > button
+	{
+		border: none;
+	}
+
+	body > div.domainSearchArea.secPdng > div > div.col-md-12 > ul > li{
+		padding: 0;
+	}*/
+
+}
+
+/* page ShowExperience */
+body > div.aboutServiceArea.secPdng > div{
+	text-align: right;
+}
+
+body > div.aboutServiceArea.secPdng > div > div:nth-child(2) > div > div > div.aServiceContent{
+	text-align: left;
+}
+
+/* page CreateExperience */
+body > div.cartArea.secPdngB > div.container > div > div.col-md-12 > div.availableDomain.clearfix.animated.fadeInUp > div.aDomainLeft.clearfix > div > div
+{
+	margin-top: 10px;
+}
+/*informations form*/
+.autoflow-3{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+.autoflow-3 > *{
+	width: 32%;
+}

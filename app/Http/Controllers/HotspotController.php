@@ -56,8 +56,12 @@ class HotspotController extends Controller
     public function create(Exp $exp, Image $image, Request $request, $id)
     {
         $photo = $request->photo;//pour envoyer l'id de l'image
-        $exps = Exp::all();
-        $users = JoinUserExp::all();
+        // $exps = Exp::all();
+        // $users = JoinUserExp::all();
+        $users = JoinUserExp::where('id_user', $exp->id)->get();
+        $exps = DB::table('exps')
+            ->join('join_user_exps', 'exps.id', '=', 'join_user_exps.id_exp')
+            ->get();
         //je selectionne seulement les Id des images correspondant a l'exp
         $joinexpimages = JoinExpImage::
             where('exp_id', $exp->id)
@@ -82,7 +86,12 @@ class HotspotController extends Controller
      */
     public function store(Exp $exp, Image $image, Request $request, $id)
     {
-        echo "<BR>Formulaire : ";
+        $this->validate($request, [
+                'media_id' => 'required:posts|max:20',
+                'description_spot' => 'required:posts|max:20',
+            ]);//on impose un nom et evite que le poste depasse 20 caractere
+
+        echo "<BR>Formulaire :".$request->description;
         $hotspot = Hotspot::create([
         'media_id' => $request->media_id,
         'shift_x' => $request->shift_x,
@@ -95,6 +104,7 @@ class HotspotController extends Controller
         'latitude' => $request->latitude,
         'longitude' => $request->longitude,
         'exp_id' => $request->exp_id,
+        'description_spot' => $request->description_spot,
         'image_id' => $id,
         'image_idX' => $request->image_idX,
         'image_idY' => $request->image_idY,
@@ -103,10 +113,10 @@ class HotspotController extends Controller
         'image_linkY' => $request->image_linkY,
         ]);
     // il faut aussi associer la jointure avec l'id, OK !!
-    $joins = DB::table('join_image_hotspots')->insert([
-        'image_id' => $id,
-        'spot_id' => $hotspot->id
-        ]);
+        $joins = DB::table('join_image_hotspots')->insert([
+            'image_id' => $id,
+            'spot_id' => $hotspot->id
+            ]);
 
         $users = JoinUserExp::where('id_user', $exp->id)->get();
         $exps = DB::table('exps')
@@ -120,7 +130,7 @@ class HotspotController extends Controller
         $hotspots = Hotspot::where('image_id', $id)->get();
 
         return view('exps.photos.hotspots.show', compact('exp', 'hotspots', 'id'))
-        ->with('message', 'Hotspot placé !');
+        ->with('message', 'Hotspot ajouté !');
     }
 
     /**

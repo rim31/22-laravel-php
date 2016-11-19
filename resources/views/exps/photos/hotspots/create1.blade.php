@@ -154,7 +154,7 @@
                     <input id="longitude" type="text" name="longitude" value="" hidden>
                     <input id="exp_id" type="text" name="exp_id" value={{$exp->id}} hidden>
                     <input id="image_id" type="text" name="image_id" value={{$id}} hidden>
-                    <input id="description" type="text" name="description" value="" hidden>
+<!--                     <input id="description" type="text" name="description" value="" hidden> -->
                     <input id="image_idX" type="text" name="image_idX" value="" hidden>
                     <input id="image_idY" type="text" name="image_idY" value="" hidden>
                     <input id="image_linkX" type="text" name="image_linkX" value="" hidden>

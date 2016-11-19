@@ -20,7 +20,9 @@
   <div class="container">
     <div class="row">
       <div class="sectionTitle animated">
-        <div class="h2">Placer votre hotspot sur l'image </div>
+          <div class="h2">
+          <span>Placer</span> votre hotspot sur l'image.
+          </div>
       </div>
     </div>
     <!-- ======================== bouton suppr et retour ========================= -->
@@ -66,8 +68,10 @@
         </div>
         <!-- ===================miniature selectionnable en ===================== -->
         <div class="row selectLink ">
-          <div class="postTitle h3 animated">
-            Selectionner la destination
+          <div class="sectionTitle animated">
+              <div class="h2">
+              <span>Sélectionner</span> une image <br> Puis <span>placer</span> la postition d'arrivé
+              </div>
           </div>
           <!-- <h3>Selectionner la destination</h3> -->
           <form action="<?php echo e(route('exp.photo.hotspot.store', [$exp->id, $id])); ?>" method="post">
@@ -118,8 +122,8 @@
                             <option>moyen</option>
                             <option>grand</option>
                           </select>
-                          <input id="media_id" name="media_id" type="text" value="" placeholder="Nom">
-                          <p></p>
+                          <input id="media_id" name="media_id" type="text"  maxlength="20" value="" placeholder="Nom">
+                          <input id="description_spot" name="description_spot" type="text"  maxlength="20" value="" placeholder="description">
                           <input id="shift_x" type="text" name="shift_x" value="" hidden>
                           <input id="shift_y" type="text" name="shift_y" value="" hidden>
                           <input id="shift_z" type="text" name="shift_z" value="" hidden>
@@ -130,7 +134,6 @@
                           <input id="longitude" type="text" name="longitude" value="" hidden>
                           <input id="exp_id" type="text" name="exp_id" value=<?php echo e($exp->id); ?> hidden>
                           <input id="image_id" type="text" name="image_id" value=<?php echo e($id); ?> hidden>
-                          <input id="description" type="text" name="description" value="" hidden>
                           <input id="image_idX" type="text" name="image_idX" value="" hidden>
                           <input id="image_idY" type="text" name="image_idY" value="" hidden>
                           <input id="image_linkX" type="text" name="image_linkX" value="" hidden>

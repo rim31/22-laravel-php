@@ -22,7 +22,7 @@ class CreateExpsTable extends Migration
             $table->string('adress');
             $table->integer('surface');
             $table->integer('price')->unsigned();
-            $table->integer('rooms');
+            $table->integer('rooms')->default(1);
             $table->string('parking');
             $table->string('lift');
             $table->integer('level');

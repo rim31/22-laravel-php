@@ -30,9 +30,20 @@ class ExpController extends Controller
      */
     public function index()
     {
-        $exps = DB::table('exps')->where('delete', '!=', '1')->paginate(5);//pagination des experiences
+        // $exps = DB::table('exps')->where('delete', '!=', '1')->paginate(5);//pagination des experiences
+        // $users = JoinUserExp::all();// var_dump($users);
+        $users = JoinUserExp::where('id_user',(Auth::user()->id))
+            ->where('delete', '!=', '1')
+            ->get();
+        // $exps = DB::table('exps')//pagination mais pb lors de suppression
+        //     ->join('join_user_exps', 'exps.id', '=', 'join_user_exps.id_exp')
+        //     ->paginate(5);
+        $exps = DB::table('exps')
+            ->join('join_user_exps', 'exps.id', '=', 'join_user_exps.id_exp')
+            ->get();
+
         $images = Image::find(Auth::user()->id);//pour la cover
-        $users = JoinUserExp::all();// var_dump($users);
+
         return view('exps.index', compact('exps', 'users', 'images'));
 
         // $exps = DB::table('exps')->paginate(5);//pagination des experiences
@@ -98,14 +109,12 @@ class ExpController extends Controller
         if (!file_exists(public_path('img/'.$nouvel->id))) {
         File::makeDirectory(public_path('img/'.$nouvel->id));
         }
-        //on injecte l'image dans ce dossier
+        //on injecte l'image dans ce dossier (!) option enlevé, initialement mis pour mettre la photo de couverture de l'exp
         if ($file = $request->photo) {
             $photo = $file->getClientOriginalName();//on recupère le nom de la phot avec l'extension
             $nouvel->update(['photo' => $nouvel->id.'.'.$file->getClientOriginalExtension()]);//on sauvegarde le fichier avatar avec le nom de l'id de l'exp
             $file->move('img/'.$nouvel->id, $nouvel->photo);//on deplace le ficiher
         }
-
-
 
         //-----------------------------------------//
 
@@ -163,7 +172,7 @@ class ExpController extends Controller
      */
     public function destroy(Exp $exp)
     {
-        var_dump($exp->id);//id de la photo dans l'experience*/
+        // var_dump($exp->id);//id de la photo dans l'experience*/
 
         $joins = JoinUserExp::find($exp->id);
         $joins->update([

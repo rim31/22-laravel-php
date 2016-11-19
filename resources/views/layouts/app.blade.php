@@ -11,6 +11,9 @@
     <link rel="stylesheet" href="{{ URL::asset('css/custom/style.css') }}">
     <!-- custom css file -->
     <link rel="stylesheet" href="{{ URL::asset('css/custom/customStyle.css') }}">
+    <!-- main css bootstrap -->
+    <link rel="stylesheet" href="{{ URL::asset('css/bootstrapCSS/bootstrap.min.css') }}">
+<!--     <link rel="stylesheet" href="{{ URL::asset('css/bootstrapCSS/bootstrap-theme.min.css') }}">     -->
     <!-- responsive css file -->
     <link rel="stylesheet" href="{{ URL::asset('css/responsive/responsive.css') }}">
     <!-- custom css for hotspot -->
@@ -18,6 +21,14 @@
     <!-- custom css hotspot & hotspotArea-->
     <link rel="stylesheet" href="{{ URL::asset('css/hotspot.css')}}" />
     <link rel="stylesheet" href="{{ URL::asset('css/hotspotArea.css')}}" />
+    <!-- custom css for experience -->
+    <link rel="stylesheet" href="{{ URL::asset('css/custom/exp.css') }}">
+    <!-- custom css for photo -->
+    <link rel="stylesheet" href="{{ URL::asset('css/custom/photo.css') }}">
+    <!-- custom css for hotspot -->
+    <link rel="stylesheet" href="{{ URL::asset('css/custom/hotspot.css') }}">
+
+
     <!-- favicon -->
     <link rel="icon" type="image/png" href="{{ URL::asset('img/favicon.png') }}">
 
@@ -116,13 +127,12 @@
                                     <ul class="sub-menu">
                                         <li><a href="index-1.html">Home Version 01</a></li>
                                         <li><a href="index-2.html">Home Version 02</a></li>
-
                                     </ul>
                                 </li>
                                 @if (!Auth::guest())
                                 <li><a href="{{ url('/exp') }}">Mes expériences</a></li>
                                 @endif
-                                <li><a href="contact.html">Contact</a></li>
+                                <!-- <li><a href="contact.html">Contact</a></li> -->
                             </ul>
                         </nav>
                     </div>
