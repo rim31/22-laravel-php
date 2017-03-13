@@ -1,0 +1,91 @@
+/* CUSTOM CSS */
+/* Graphic Charter */
+.green{
+	color: #2ECC71;
+}
+
+.grey{
+	color: #9AADBF !important;
+}
+
+/* style of the index pages */
+
+
+.buttonPhoto {
+	vertical-align: middle;
+	text-align: center;
+	padding: 2px;
+}
+
+.greenButton {
+	background: #2ECC71;
+}
+
+body > div.domainSearchArea.secPdng > div > div > div > ul > li.availableDomain.clearfix.animated.fadeInUp > div.flexButton > div > a
+{
+	margin-bottom: 8px;
+}
+
+body > div.domainSearchArea.secPdng > div > div > div:nth-child(3) > ul > li.availableDomain.clearfix.animated.fadeInUp > div.domainBtn.clearfix.flexButton > div:nth-child(2) > form > button
+{
+	margin-bottom: 8px;
+}
+
+/*test olivier media Query */
+@media only screen and (max-width: 2080px)
+{
+	.imgIndex {
+		/*height: 150px;*/
+		width: auto;
+	}
+}
+
+@media only screen and (max-width: 767px)
+{
+	.imgIndex {
+		/*height: 120px;*/
+		width: auto;
+	}
+
+	.photosList{
+		flex-direction: column;
+	}
+}
+
+@media only screen and (max-width: 480px)
+{
+	.imgIndex {
+		/*height: 100px;*/
+		width: auto;
+	}
+}
+
+.inputfile + label {
+    font-size: 1.25em;
+    font-weight: 700;
+    color: white;
+/*    background-color: black;*/
+    display: inline-block;
+}
+
+/* removing the text decoration of the label named "importer ou glisser et déposer votre image ici " */
+body > div.domainCtaArea.animated.fadeInUp > div > div > div > div > form > div.fileInput > label{
+	text-decoration: none;
+}
+
+.inputfile:focus + label,
+.inputfile + label:active {
+	background-color: #2ECC71;
+	transition: 1s;
+	width: 100%;
+}
+
+.inputfile + label {
+	cursor: pointer; /* "hand" cursor */
+}
+
+.inputfile:focus + label {
+	outline: 1px dotted #000;
+	outline: -webkit-focus-ring-color auto 5px;
+}
+

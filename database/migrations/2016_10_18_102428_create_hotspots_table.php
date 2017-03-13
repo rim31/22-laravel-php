@@ -32,7 +32,7 @@ class CreateHotspotsTable extends Migration
             $table->string('image_linkX');
             $table->string('image_linkY');
             $table->string('description_spot');
-            $table->string('delete');
+            $table->string('is_delete');
             $table->dateTime('time_del');
             $table->string('option_1');
             $table->string('option_2');

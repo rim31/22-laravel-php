@@ -16,7 +16,7 @@ class CreateJoinImageHotspotsTable extends Migration
             $table->increments('id');
             $table->integer('image_id');
             $table->integer('spot_id');
-            $table->string('delete');
+            $table->string('is_delete');
             $table->dateTime('time_del');
             $table->string('actif')->default(1);
             $table->integer('option_1');

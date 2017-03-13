@@ -1,0 +1,124 @@
+*
+{
+  margin: 0;
+  padding: 0;
+  border: 0px solid transparent;
+}
+
+.quartz
+{
+  width : 100%;
+  height : 100%;
+}
+
+.quartz > .errorMsg
+{
+  color: antiquewhite;
+  position: absolute;
+  top: 0;
+  text-align: center;
+  font-size: 2em;
+}
+
+.quartz > canvas
+{
+  position : absolute;
+  display : block;
+  height : inherit;
+  width : inherit;
+  margin : 0;
+  border: 0px solid transparent;
+  /*cursor : url(../img/quartz-package/cursor.png), crosshair;*/
+  cursor: all-scroll;
+}
+
+div.unclickable
+{
+  pointer-events : none;
+}
+
+div.error
+{
+  background-color : #3E83C8;
+  background-repeat: no-repeat;
+
+  color: whitesmoke;
+  text-align: center;
+  font-family: Verdana;
+  font-size: 1.5em;
+
+  display : flex ;
+  flex-direction : column ;
+  justify-content : space-around ;
+  align-items : center ;
+  position : absolute;
+  top : 0;
+  left: 0;
+  z-index: 10;
+  width : 100%;
+  height: 100%;
+}
+
+div.transition
+{
+  background-color : #252627;
+  background-image : url(../img/quartz-package/quartz-logo/back_black.png);
+  background-repeat: no-repeat;
+  background-size : 37.5%;
+  background-position: center;
+
+  position : absolute;
+  top : 0;
+  left: 0;
+  z-index: 9;
+  width : 100%;
+  height: 100%;
+}
+
+.autohide {
+  animation : fadeOut 0.5s forwards cubic-bezier( 0.4 , 0.0 , 1 , 1 );
+}
+
+.hide {
+  visibility: hidden;
+}
+
+.autoshow {
+  animation : fadeIn 0.5s forwards cubic-bezier( 0.0 , 0.0 , 0.2 , 1 );
+}
+
+.show {
+  visibility: show;
+}
+
+@-webkit-keyframes fadeOut {
+  from { opacity: 1; }
+  to {
+    opacity : 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to {
+    opacity : 0;
+    visibility: hidden;
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  from { opacity: 0; }
+  to {
+    opacity : 1;
+    visibility: visible;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to {
+    opacity : 1;
+    visibility: visible;
+  }
+}

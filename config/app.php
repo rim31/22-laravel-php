@@ -66,6 +66,7 @@ return [
     */
 
     'locale' => 'en',
+    // 'locale' => ['en' => 'English', 'fr' => 'Français', 'cn' => '中国', 'es' => 'espanol' ],
 
     /*
     |--------------------------------------------------------------------------
@@ -79,6 +80,7 @@ return [
     */
 
     'fallback_locale' => 'en',
+    // 'fallback_locale' => ['en' => 'English', 'fr' => 'Français', 'cn' => '中国', 'es' => 'espanol' ],
 
     /*
     |--------------------------------------------------------------------------
@@ -157,7 +159,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         Collective\Html\HtmlServiceProvider::class,
-        Intervention\Image\ImageServiceProvider::class,
+        //Intervention\Image\ImageServiceProvider::class,
 
 
 

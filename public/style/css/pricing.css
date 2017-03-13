@@ -1,0 +1,24 @@
+/*=========PRICING=========*/
+
+.package {
+	background-color: #ccc;
+	padding: 2px 2px;
+	border-right: 5px solid white;
+	border-left: 5px solid white;
+}
+
+.package p{
+	padding-left: 8px;
+	padding-top: 5px;
+}
+
+.flexOffers{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-around;
+}
+
+.btnOffers{
+	width: 100%;
+}

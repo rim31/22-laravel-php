@@ -1,0 +1,160 @@
+/******************/
+/*   welcome.css  */
+/******************/
+
+
+/*** CHARTE GRAPHIQUE ***/
+/*
+
+gris du menu nav #9B9B9B;
+
+
+*/
+
+.white {
+	color: white;
+}
+
+
+.wallpaper {
+	background-color: #94C7F5;
+	color:white;
+	background-image: url('../../../img/wallpaper.png');
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 70vh;
+/*     filter: blur(5px);
+-webkit-filter: blur(5px);
+-moz-filter: blur(5px);
+-o-filter: blur(5px);
+-ms-filter: blur(5px); */
+}
+
+/*text over the homepage wallpaper background*/
+.headlineWallpaper{
+	position: relative;
+	/*bottom: 52%;*/
+	/*left: 40%;*/
+
+	/*text style*/
+	color: white;
+	text-shadow: 1px 1px #000;
+}
+
+.wallpaper2 {
+	background-color: #94C7F5;
+	color:white;
+	background-image: url('../../../img/wallpaper.png');
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 50vh;
+	width: 100%;
+     filter: blur(2px);
+	-webkit-filter: blur(2px);
+	-moz-filter: blur(2px);
+	-o-filter: blur(2px);
+	-ms-filter: blur(2px); 
+}
+
+.headlineWallpaper2{
+	position: relative; 
+	top: -50vh; 
+	left: 25vw; 
+	width: 100%; 
+	color: white;
+	text-shadow: 1px 1px #000;
+}
+
+.bouttonBlanc{
+	text-shadow: none;
+}
+
+/* ======== explication steps demo ======== */
+.demoSteps {
+}
+
+.steps {
+	display: flex;
+	flex-direction: row;
+	align-self: auto; 
+	}
+
+
+/* ======== les bords de la video ======== */
+
+.videoDemo {
+    border: 15px solid #3490ED; 
+	width: 100%
+}
+
+/* ======== prix ======== */
+
+.price {
+		background-color: white;
+		border-radius: 3px;
+		box-shadow: 1px 1px 1px 2px grey;
+		padding-top: 10px;
+		padding-bottom: 10px;
+}
+
+.priceBody {
+	color: #222222;
+}
+
+.priceImg img{
+	height: 10vh;
+}
+
+.verticalLine {
+	border-left-style: groove;
+/*     border: 5px solid #ff0000; 
+*/}
+
+.priceHead {
+	color: #222222;
+}
+.wallpaperGrey {
+	background-color: #9B9B9B;
+	height: 40vh;
+
+}
+
+.wallpaperGrisClair {
+	background-color: #F9F9F9;
+	height: 40vh;
+	color: black;
+
+}
+
+/* ======== description qwartz ======== */
+
+.wallpaperQwartz {
+	background-color: #7A8B9C;
+	color:white;
+	height: 70vh;
+}
+
+.wallpaperQwartz img {
+	padding-top: 10px;
+}
+
+.exempleQwartz {
+	/*color: white;*/
+	/*text-decoration: underline;*/
+	border-bottom-style: solid;
+}
+
+/*=========== helper video ==========*/
+
+.wallpaperHelp {
+	background-color: white;
+	color:white;
+	height: 70vh;
+}
+.wallpaperHelp span {
+	padding: 10px;
+}
+
+.videoHelp {
+
+}

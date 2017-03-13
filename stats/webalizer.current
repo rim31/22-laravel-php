@@ -1,0 +1,686 @@
+# Webalizer V2.23-08 Incremental Data - 12/11/2016 21:49:58
+2016 12 11 21 49 58
+1083 877 73 105 35 35 60809520 253 92 0 0 0
+1 1 125 1 11
+294 230 15025381 14 55 18 0 0
+49 36 318724 19 25 16 0 0
+32 14 120434 10 29 12 0 0
+81 70 1755372 8 19 6 0 0
+27 23 176361 6 5 4 0 0
+279 241 7982971 12 71 15 0 0
+233 193 34851836 7 27 7 0 0
+6 4 63884 4 5 4 0 0
+75 62 469926 7 12 6 0 0
+6 4 43585 3 4 3 0 0
+1 0 1046 1 1 1 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+8 4 49032 7 0 0
+31 26 216319 9 0 0
+67 59 1636143 16 0 0
+5 1 28590 5 0 0
+4 2 21309 4 0 0
+30 25 373231 6 0 0
+9 2 10182 7 0 0
+19 16 86782 6 0 0
+13 6 111989 12 0 0
+3 1 6700 3 0 0
+38 27 187918 21 0 0
+133 111 2267768 20 0 0
+56 47 1666049 41 0 0
+2 2 53177 1 0 0
+53 34 347600 17 0 0
+2 1 5189 2 0 0
+6 4 15232 5 0 0
+156 130 5109501 16 0 0
+214 198 23504374 23 0 0
+9 3 57062 8 0 0
+32 22 165981 5 0 0
+1 0 1046 1 0 0
+106 80 15551984 10 0 0
+86 76 9336362 8 0 0
+0
+0
+0
+877
+0
+0
+0
+0
+0
+32
+0
+3
+84
+0
+55
+0
+0
+0
+0
+0
+0
+32
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+# -urls- 
+/exp/create
+0 3 0 164402 0 0 0 0
+/fonts/webfonts/proximanova-bold.woff
+0 16 0 274677 0 0 0 0
+/css/font-awesome.min.css
+0 20 0 132240 0 0 0 0
+/fonts/webfonts/proximanova-regular.woff
+0 5 0 108194 0 0 0 0
+/img/icon/care-support.png
+1 5 0 25510 0 0 0 0
+/js/bootstrapJS/bootstrap.min.js
+0 20 0 230000 0 0 0 0
+/img/icon/serv-04.png
+1 5 0 19150 0 0 0 0
+/js/owl.carousel.min.js
+0 20 0 247936 0 0 0 0
+/logo.png
+1 2 0 161482 0 0 0 0
+/css/custom/hotspot.css
+0 22 0 28354 0 0 0 0
+/register
+0 7 0 49133 0 0 0 0
+/img/icon/user.png
+1 5 0 18510 0 0 0 0
+/logo_transition.png
+1 4 0 358508 0 0 0 0
+/img/1/2.PNG
+1 1 0 645293 0 0 0 0
+/img/client-6.png
+1 5 0 6930 0 0 0 0
+/logo_1.png
+1 2 0 168542 0 0 0 0
+/logo_2.png
+1 2 0 174748 0 0 0 0
+/img/1/3_mini.PNG
+1 11 0 7864076 0 0 0 0
+/img/1/5.PNG
+1 2 0 1332229 0 0 0 0
+/img/client-4.png
+1 5 0 7215 0 0 0 0
+/img/logo.png
+1 18 0 592988 0 0 0 0
+/img/clouds/cloud-4.png
+1 5 0 10261 0 0 0 0
+/js/jquery.1.11.3.min.js
+0 20 0 736386 0 0 0 0
+/img/1/4.PNG
+1 1 0 639703 0 0 0 0
+/fonts/fontawesome-webfont.woff
+0 5 0 419600 0 0 0 0
+/img/1/4_mini.PNG
+1 11 0 8120852 0 0 0 0
+/img/pointer/largePointer.png
+1 2 0 56689 0 0 0 0
+/exp/3
+0 3 0 12933 0 0 0 0
+/password/reset
+0 6 0 52922 0 2 0 0
+/css/homePage.css
+0 5 0 3340 0 0 0 0
+/exp/1/photo
+0 5 0 25807 0 0 0 0
+/img/1/3.PNG
+1 1 0 671244 0 0 0 0
+/css/custom/style.css
+0 21 0 261473 0 0 0 0
+/img/1/2_mini.PNG
+1 11 0 7234528 0 0 0 0
+/fonts/icofont.woff
+0 4 0 845620 0 0 0 0
+/css/hotspot.css
+0 20 0 5438 0 0 0 0
+/exp
+0 12 0 52387 1 0 0 0
+/img/icon/users.png
+1 5 0 26650 0 0 0 0
+/scriptsQuartz/three.min.js
+0 4 0 484238 0 0 0 0
+/fonts/webfonts/fonts.css
+0 20 0 14161 0 0 0 0
+/exp/3/photo/create
+0 2 0 8021 0 0 0 0
+/js/waypoints.min.js
+0 20 0 65364 0 0 0 0
+/img/icon/serv-05.png
+1 5 0 24395 0 0 0 0
+/img/client-1.png
+1 5 0 6140 0 0 0 0
+/quartz.xml
+0 2 0 1666 0 0 0 0
+/favicon.ico
+0 4 0 1309 0 0 0 0
+/img/1/1.PNG
+1 2 0 674826 0 0 0 0
+/fonts/fontawesome-webfont.woff2
+0 11 0 335688 0 0 0 0
+/img/client-5.png
+1 5 0 5630 0 0 0 0
+/logo_4.png
+1 2 0 184623 0 0 0 0
+/img/icon/gear.png
+1 5 0 29205 0 0 0 0
+/css/hotspotArea.css
+0 23 0 30637 0 0 0 0
+/scriptsQuartz/quartz.min.js
+0 4 0 47729 0 0 0 0
+/css/icofont.css
+0 20 0 361520 0 0 0 0
+/css/owl.carousel.css
+0 20 0 29441 0 0 0 0
+/scriptsQuartz/platform.min.js
+0 4 0 26418 0 0 0 0
+/exp/3/photo/6/hotspot/create
+0 1 0 5195 0 1 0 0
+/img/1/5_mini.PNG
+1 13 0 7068975 0 0 0 0
+/img/clouds/cloud-5.png
+1 5 0 10171 0 0 0 0
+/css/custom/photo.css
+0 23 0 19708 0 0 0 0
+/img/clouds/cloud-2.png
+1 5 0 9588 0 0 0 0
+/img/server.png
+1 5 0 225545 0 0 0 0
+/logo_3.png
+1 2 0 180271 0 0 0 0
+/img/favicon/favicon.png
+1 1 0 1745 0 0 0 0
+/fonts/fontawesome-webfont.ttf
+0 1 0 121632 0 0 0 0
+/js/active.js
+0 20 0 42580 0 0 0 0
+/styleQuartz/style.css
+0 4 0 2853 0 0 0 0
+/img/home-dsk-1.png
+1 5 0 319721 0 0 0 0
+/login
+0 71 0 370878 21 12 0 0
+/img/client-2.png
+1 5 0 5480 0 0 0 0
+/img/home-dsk-2.png
+1 5 0 288535 0 0 0 0
+/exp/4/edit
+0 2 0 109709 0 0 0 0
+/css/bootstrap.min.css
+0 20 0 436221 0 0 0 0
+/cover.png
+1 4 0 545576 0 0 0 0
+/img/icon/serv-06.png
+1 5 0 16465 0 0 0 0
+/css/animate.min.css
+0 20 0 105221 0 0 0 0
+/img/footerLogo.png
+1 18 0 592988 0 0 0 0
+/fonts/icofont.ttf
+0 20 0 9441367 0 0 0 0
+/fonts/webfonts/proximanova-light.woff
+0 5 0 134057 0 0 0 0
+/fonts/webfonts/proximanova-semibold.woff
+0 16 0 273558 0 0 0 0
+/quartz
+0 4 0 5609 0 2 0 0
+/img/icon/domain-bg.jpg
+1 5 0 26840 0 0 0 0
+/css/custom/exp.css
+0 23 0 29320 0 0 0 0
+/js/functions.js
+0 1 0 1474 0 0 0 0
+/exp/3/photo
+0 3 0 13342 0 0 0 0
+/img/clouds/cloud-1.png
+1 5 0 12432 0 0 0 0
+/img/icon/earth.png
+1 5 0 22325 0 0 0 0
+/img/clouds/cloud-3.png
+1 5 0 8993 0 0 0 0
+/
+0 5 0 26640 52 4 0 0
+/target.png
+1 4 0 117776 0 0 0 0
+/img/1/1_mini.PNG
+1 4 0 3341325 0 0 0 0
+/css/bootstrapCSS/bootstrap.min.css
+0 22 0 457619 0 0 0 0
+/css/custom/customStyle.css
+0 24 0 16590 0 0 0 0
+/img/3/6_mini.PNG
+1 2 0 416018 0 0 0 0
+/exp/1/photo/1/hotspot/1
+0 1 0 5157 0 0 0 0
+/js/chatScript.js
+0 20 0 13017 0 0 0 0
+/styleQuartz/quartz.css
+0 4 0 4363 0 0 0 0
+/img/favicon.png
+1 13 0 641230 0 0 0 0
+/exp/3/edit
+0 10 0 548889 0 0 0 0
+/robots.txt
+0 13 0 4308 0 0 0 0
+/css/responsive/responsive.css
+0 24 0 118644 0 0 0 0
+/img/icon/home.png
+1 5 0 13630 0 0 0 0
+/img/client-3.png
+1 5 0 6165 0 0 0 0
+/img/icon/cloud-up.png
+1 5 0 23655 0 0 0 0
+/exp/4
+0 1 0 4302 0 0 0 0
+# End Of Table - urls
+# -sites- (monthly)
+66.249.64.28
+0 5 4 26742 2 1480608525 0 0
+/login
+54.185.166.156
+0 2 1 16018 1 1480794445 0 0
+/login
+66.249.76.17
+0 1 1 3851 1 1480638083 0 0
+/login
+104.131.186.156
+0 2 1 15992 1 1480667607 0 0
+/login
+121.42.0.77
+0 4 4 197304 0 0 0 0
+-
+66.249.93.144
+0 1 1 3856 1 1480595125 0 0
+/login
+121.42.0.57
+0 2 1 5270 1 1480757460 0 0
+/login
+66.249.66.171
+0 7 6 23397 1 1480846945 0 0
+/login
+66.249.93.152
+0 29 28 1644770 4 1481199369 0 0
+/login
+107.191.102.245
+0 2 1 15994 1 1481048425 0 0
+/login
+91.227.68.249
+0 1 0 1046 1 1481492998 0 0
+/
+66.249.64.31
+0 5 0 26258 2 1480591174 0 0
+-
+216.119.142.90
+0 2 1 5147 1 1481048463 0 0
+/login
+66.249.69.177
+0 16 16 120787 0 0 0 0
+-
+66.249.69.26
+0 1 0 1436 1 1480642671 0 0
+/
+66.249.79.171
+0 2 2 7706 2 1480726094 0 0
+/login
+69.58.178.56
+0 11 5 106850 1 1480862879 0 0
+-
+66.249.76.26
+0 1 1 3849 1 1480668718 0 0
+/login
+45.56.116.155
+0 2 1 5146 1 1480653794 0 0
+/login
+193.201.225.65
+0 1 0 1378 1 1481138671 0 0
+/
+66.249.76.24
+0 1 0 1414 1 1480668717 0 0
+/
+66.249.64.25
+0 8 3 44309 4 1480608524 0 0
+-
+66.249.76.12
+0 17 16 128658 2 1480681723 0 0
+/login
+37.166.233.65
+0 86 84 9336362 1 1480636757 0 0
+/exp
+69.64.59.39
+0 2 1 16044 1 1480789592 0 0
+/login
+69.58.178.58
+0 9 4 90734 1 1480580570 0 0
+-
+38.100.21.69
+0 11 9 174033 1 1481029096 0 0
+-
+38.99.82.191
+0 8 2 9191 1 1480747671 0 0
+/
+66.249.69.181
+0 7 6 16278 1 1481267292 0 0
+/login
+121.42.0.67
+0 29 28 633421 1 1480874027 0 0
+/login
+199.217.117.207
+0 1 0 11432 0 0 0 0
+-
+66.249.79.149
+0 7 2 44840 2 1480761062 0 0
+/
+70.42.131.170
+0 7 6 200171 0 0 0 0
+-
+163.172.169.87
+0 1 0 1375 1 1480688356 0 0
+/
+138.197.46.6
+0 2 1 16163 1 1481343449 0 0
+/login
+104.131.190.142
+0 1 0 997 1 1481056231 0 0
+/
+121.42.0.73
+0 31 30 795571 1 1480874028 0 0
+/login
+37.162.79.222
+0 106 104 15551984 1 1481149056 0 0
+/exp
+66.249.66.168
+0 9 8 65983 2 1481106147 0 0
+/
+66.249.66.174
+0 6 5 19920 2 1481106148 0 0
+/login
+66.249.79.174
+0 2 0 2816 2 1480726093 0 0
+/
+66.249.65.22
+0 3 2 9112 2 1481008091 0 0
+/login
+80.12.42.175
+0 1 1 4452 1 1481215933 0 0
+/exp
+188.165.29.82
+0 2 1 5265 1 1481158676 0 0
+/login
+162.242.156.106
+0 7 3 26961 3 1481263175 0 0
+/login
+66.249.69.18
+0 5 4 28741 1 1480643410 0 0
+-
+79.46.46.217
+0 19 18 155868 1 1480570983 0 0
+/login
+66.249.93.154
+0 23 22 1221755 1 1481048473 0 0
+/login
+66.249.65.20
+0 3 1 13179 2 1480994529 0 0
+-
+66.249.69.179
+0 14 14 93026 0 0 0 0
+-
+66.249.69.44
+0 1 0 1412 1 1481365348 0 0
+/
+66.249.93.153
+0 16 16 229099 2 1481286113 0 0
+/login
+37.115.124.188
+0 3 0 34062 1 1480621351 0 0
+-
+66.249.79.145
+0 8 6 22421 3 1480761063 0 0
+/login
+121.42.0.61
+0 1 0 1430 1 1480757442 0 0
+/
+66.249.65.18
+0 1 0 575 1 1480994527 0 0
+-
+66.249.69.36
+0 3 3 26010 1 1481365349 0 0
+/login
+66.249.69.22
+0 1 1 17035 0 0 0 0
+-
+138.197.5.69
+0 1 0 991 1 1481180333 0 0
+/
+66.249.76.14
+0 4 1 38155 1 1480643169 0 0
+-
+66.249.76.15
+0 1 0 1414 1 1480638082 0 0
+/
+66.249.76.13
+0 5 5 7586 0 0 0 0
+-
+66.249.66.23
+0 1 0 11432 1 1480810200 0 0
+-
+66.249.79.168
+0 3 2 5593 1 1480748890 0 0
+/login
+52.23.228.187
+0 29 28 1414865 1 1480560125 0 0
+/login
+50.22.90.226
+0 30 29 1447193 1 1481048417 0 0
+/login
+104.130.124.209
+0 5 2 21766 2 1480612685 0 0
+/login
+66.249.93.145
+0 1 1 49326 0 0 0 0
+-
+66.249.93.208
+0 2 2 53180 1 1480935658 0 0
+/login
+176.160.219.26
+0 403 336 26294586 6 1481314172 0 0
+/login
+134.249.159.113
+0 2 1 5189 1 1480866875 0 0
+/login
+176.160.217.110
+0 8 6 13656 1 1480946940 0 0
+/login
+37.166.2.129
+0 29 21 159692 1 1480591377 0 0
+/login
+# End Of Table - sites (monthly)
+# -sites- (daily)
+91.227.68.249
+0 1 0 1046 1 1481492998 0 0
+/
+# End Of Table - sites (daily)
+# -referrers- 
+http://www.xxiidna2.com/img/logo.png
+1 1
+http://xxiidna2.com/exp/3/photo/6/hotspot/create
+1 3
+http://www.xxiidna2.com/styleQuartz/style.css
+1 3
+http://xxiidna2.com/exp/3/photo/create
+1 2
+http://www.xxiidna2.com/exp
+1 2
+http://www.xxiidna2.com/css/icofont.css
+1 2
+http://www.xxiidna2.com/css/custom/style.css
+1 1
+http://xxiidna2.com/styleQuartz/style.css
+1 6
+http://xxiidna2.com/exp
+1 24
+http://xxiidna2.com/img/footerLogo.png
+1 1
+http://www.xxiidna2.com/css/font-awesome.min.css
+1 2
+http://xxiidna2.com/quartz
+1 28
+http://www.netcraft.com/survey/
+0 2
+http://xxiidna2.com/exp/1/photo
+1 44
+http://xxiidna2.com/exp/1/photo/1/hotspot/1
+1 6
+- (Direct Request)
+0 231
+http://www.xxiidna2.com/exp/1/photo
+1 5
+http://xxiidna2.com/img/logo.png
+1 1
+http://www.bing.com/search
+0 2
+http://xxiidna2.com/exp/3/photo
+1 4
+http://www.xxiidna2.com/quartz
+1 17
+http://www.xxiidna2.com/login
+1 97
+http://xxiidna2.com/css/hotspotArea.css
+1 1
+http://xxiidna2.com/register
+1 3
+http://www.xxiidna2.com/
+1 26
+http://xxiidna2.com/css/custom/style.css
+1 2
+http://xxiidna2.com/
+1 113
+http://www.xxiidna2.com/img/footerLogo.png
+1 1
+http://xxiidna2.com/login
+1 395
+http://xxiidna2.com/exp/create
+1 4
+http://xxiidna2.com/css/icofont.css
+1 14
+http://www.xxiidna2.com/fonts/webfonts/fonts.css
+1 6
+http://xxiidna2.com/css/font-awesome.min.css
+1 7
+http://xxiidna2.com/fonts/webfonts/fonts.css
+1 18
+http://xxiidna2.com/exp/3/edit
+1 9
+# End Of Table - referrers
+# -agents- 
+Mozilla/5.0
+0 2
+Mozilla/5.0 (Windows; U; Windows NT 5.1; rv:1.7.3) Gecko/20041001 Firefox/0.10.1
+0 2
+Mozilla/5.0 (compatible; NetcraftSurveyAgent/1.0; +info@netcraft.com)
+0 2
+Mozilla/4.0 (compatible; Netcraft Web Server Survey)
+0 2
+Mozilla/5.0 (Windows NT 6.3; WOW64; rv:28.0) Gecko/20100101 Firefox/28.0
+0 2
+Opera/9.80 (Windows NT 6.1; U; ru) Presto/2.9.168 Version/11.51
+0 1
+Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.98 Safari/537.36
+0 133
+Mozilla/5.0 (Windows NT 10.0; Trident/7.0; rv:11.0) like Gecko
+0 2
+Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Cen
+0 26
+Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.98 Safari/537.36
+0 192
+Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)
+0 138
+Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/534.24 (KHTML, like Gecko) Chrome/11.0.696.71 Safari/534.24
+0 12
+Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36
+0 30
+Mozilla/4.0 (compatible; Synapse)
+0 1
+Opera/9.80 (Windows NT 6.1; U; ru) Presto/2.8.131 Version/11.10
+0 3
+Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.90 Safari/537.36
+0 1
+Mozilla/4.0 (compatible; MSIE 8.0; Trident/4.0; Windows NT 6.1; SLCC2 2.5.5231; .NET CLR 2.0.50727; .NET CLR 4.1.23457; .NET 
+0 30
+Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko; Google Page Speed Insights) Chrome/27.0.1453 Safari/53
+0 29
+BlackBerry9000/4.6.0.167 Profile/MIDP-2.0 Configuration/CLDC-1.1 VendorID/102 ips-agent
+0 2
+Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.2)
+0 11
+Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko; Google Page Speed Insights) 
+0 29
+Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.79 Safari/537.36 Edge/14.14
+0 103
+Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:14.0; ips-agent) Gecko/20100101 Firefox/14.0.1
+0 18
+Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36
+0 117
+Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.96 Mobile S
+0 10
+Digincore crawler bot. See https://www.digincore.com/crawler.html for rules and instructions.
+0 2
+Mozilla/5.0 (iPhone; CPU iPhone OS 10_1_1 like Mac OS X) AppleWebKit/602.2.14 (KHTML, like Gecko) Version/10.0 Mobile/14B100 
+0 88
+Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.75 Safari/537.36 Google Favicon
+0 14
+Mozilla/5.0 (Windows NT 6.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36
+0 2
+Mozilla/5.0 (X11; U; Linux x86_64; en-US) AppleWebKit/533.3 (KHTML, like Gecko) Qt/4.7.1 Safari/533.3
+0 6
+Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/538.1 (KHTML, like Gecko) splash Safari/538.1
+0 29
+Mozilla/5.0 (Windows NT 6.3; WOW64; rv:49.0) Gecko/20100101 Firefox/49.0
+0 2
+Mozilla/5.0 (iPhone; CPU iPhone OS 6_1_3 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) Version/6.0 Mobile/WK10171 Saf
+0 33
+Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9pre) Gecko/2008040318 Firefox/3.0pre (Swiftfox)
+0 2
+Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:41.0) Gecko/20100101 Firefox/41.0
+0 4
+# End Of Table - agents
+# -search strings- 
+# End Of Table - search strings
+# -usernames- 
+# End Of Table - usernames

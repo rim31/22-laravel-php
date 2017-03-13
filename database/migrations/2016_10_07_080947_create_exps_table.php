@@ -37,7 +37,7 @@ class CreateExpsTable extends Migration
             $table->string('option_2');
             $table->string('option_3');
             $table->boolean('online')->default(false);
-            $table->string('delete');
+            $table->string('is_delete');
             $table->dateTime('time_del');
             $table->rememberToken();
             $table->timestamps();

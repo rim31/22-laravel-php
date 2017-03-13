@@ -1,0 +1,21 @@
+/* GENERAL RULES */
+li{
+	list-style-type: none !important;
+}
+/* CUSTOM CSS */
+
+
+/*hide or display more info for exp during creation*/
+#infoSuppl {
+	display: none;
+}
+
+/* bloc send or edit exp*/
+.ExpblocTitle {
+	margin-top: 10px;
+}
+
+/*button to add new fiel in exp formula*/
+.blocAjoutChampExp{
+	margin-bottom: 10px;	
+}

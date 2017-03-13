@@ -1,0 +1,25 @@
+/******************/
+/*   login.css    */
+/******************/
+
+.clientLogin {
+	background-color: #9E9E9E;
+}
+
+.clientLogin .whiteFont {
+	color: white;
+}
+
+.encadre {
+	background-color: #FEFEFE;
+	padding: 20px 25px 20px 25px;
+	margin: 25px 10px 40px 10px;
+	border-radius: 5px;
+	box-shadow: 3px 3px;
+}
+
+/*bouton LOGIN*/
+body > div.clientLogin > div > div > div.col-md-8 > div > form > div:nth-child(4) > div:nth-child(2) > button
+{
+	margin: 0px; 
+}
