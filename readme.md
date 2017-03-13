@@ -18,16 +18,12 @@ you need php, composer, laravel, mysql
 exemple creation of a projet laravel :
 
 ```
-#!shell
-
 composer create-project --prefer-dist laravel/laravel immo-vr "5.2.*"
 ```
 
 First of all, check the file :
 
 ```
-#!php
-
 .env
 ```
 
@@ -37,47 +33,38 @@ Then, in a terminal :
 **Install vendor
 **
 ```
-#!shell
-
 composer install
 ```
 
 or update
 ```
-#!shell
-
 composer update
 ```
 
 **First installation database : 
 **(drop the table 'myvr', if any problem then execute this command)
 ```
-#!shell
 php artisan migrate
 ```
 
 delete database :
 
 ```
-#!shell
 php artisan migrate:rollback
 ```
 reinitialize database
 
 
 ```
-#!shell
 php artisan migrate:refresh
 ```
 
 <!> not necessary in production(reinitialize DB and install admin22 session test) <!>
 ```
-#!shell
 php artisan migrate:refresh --seed
 ```
 without reinstalling database, just install admin22 session test :
 ```
-#!shell
 php artisan db:seed
 ```
 
@@ -91,7 +78,6 @@ Documentation for the framework can be found on the [Laravel website](http://lar
 to see route redirections :
 
 ```
-#!shell
 php artisan route:list
 ```
 
