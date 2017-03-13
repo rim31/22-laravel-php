@@ -1,4 +1,4 @@
-# Laravel PHP Framework
+# IMMO\VR (with Laravel PHP Framework 5.2)
 
 [![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
 [![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
@@ -6,13 +6,95 @@
 [![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
 [![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
+IMMO\VR is a website develloped to export easily 360° photo/video and create simple expose experience.
+
+## Official installation
+
+you need php, composer, laravel, mysql
+(https://getcomposer.org/download/)
+
+
+exemple creation of a projet laravel :
+
+```
+#!shell
+
+composer create-project --prefer-dist laravel/laravel immo-vr "5.2.*"
+```
+
+First of all, check the file :
+
+```
+#!php
+
+.env
+```
+
+
+Then, in a terminal :
+
+**Install vendor
+**
+```
+#!shell
+
+composer install
+```
+
+or update
+```
+#!shell
+
+composer update
+```
+
+**First installation database : 
+**(drop the table 'myvr', if any problem then execute this command)
+```
+#!shell
+php artisan migrate
+```
+
+delete database :
+
+```
+#!shell
+php artisan migrate:rollback
+```
+reinitialize database
+
+
+```
+#!shell
+php artisan migrate:refresh
+```
+
+<!> not necessary in production(reinitialize DB and install admin22 session test) <!>
+```
+#!shell
+php artisan migrate:refresh --seed
+```
+without reinstalling database, just install admin22 session test :
+```
+#!shell
+php artisan db:seed
+```
+
+These will set databases :
+user, join_user_exp, exp, join_exp_photo, photo, join_photo_hotspot, hotspot, (historypayment)
 
 ## Official Documentation
 
 Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
+
+to see route redirections :
+
+```
+#!shell
+php artisan route:list
+```
+
 
 ## Contributing
 
