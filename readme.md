@@ -9,6 +9,17 @@
 
 IMMO\VR is a website develloped to export easily 360° photo/video and create simple expose experience.
 
+![alt text](https://github.com/rim31/22-laravel-php/blob/master/storage/1.png)
+
+![alt text](https://github.com/rim31/22-laravel-php/blob/master/storage/2.png)
+
+![alt text](https://github.com/rim31/22-laravel-php/blob/master/storage/3.png)
+
+![alt text](https://github.com/rim31/22-laravel-php/blob/master/storage/4.png)
+
+![alt text](https://github.com/rim31/22-laravel-php/blob/master/storage/6.png)
+
+
 ## Official installation
 
 you need php, composer, laravel, mysql
